@@ -13,9 +13,9 @@ import (
 	"infra/gae/libs/wrapper"
 )
 
-// UseTQ adds a wrapper.TaskQueue implementation to context, accessible
+// useTQ adds a wrapper.TaskQueue implementation to context, accessible
 // by wrapper.GetTQ(c)
-func UseTQ(c context.Context) context.Context {
+func useTQ(c context.Context) context.Context {
 	return wrapper.SetTQFactory(c, func(ci context.Context) wrapper.TaskQueue {
 		return tqImpl{ctx(ci).Context}
 	})

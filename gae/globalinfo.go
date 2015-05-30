@@ -14,9 +14,9 @@ import (
 	"infra/gae/libs/wrapper"
 )
 
-// UseGI adds a wrapper.GlobalInfo implementation to context, accessible
+// useGI adds a wrapper.GlobalInfo implementation to context, accessible
 // by wrapper.GetGI(c)
-func UseGI(c context.Context) context.Context {
+func useGI(c context.Context) context.Context {
 	return wrapper.SetGIFactory(c, func(ci context.Context) wrapper.GlobalInfo {
 		return giImpl{ctx(c).Context, ci}
 	})
@@ -65,7 +65,7 @@ func (g giImpl) Namespace(namespace string) (context.Context, error) {
 	if err != nil {
 		return nil, err
 	}
-	return Enable(g.ctx, gaeC), nil
+	return context.WithValue(g.ctx, goonContextKey, gaeC), nil
 }
 func (g giImpl) PublicCertificates() ([]appengine.Certificate, error) {
 	return appengine.PublicCertificates(g)

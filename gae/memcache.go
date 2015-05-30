@@ -13,9 +13,9 @@ import (
 	"infra/gae/libs/wrapper"
 )
 
-// UseMC adds a wrapper.Memcache implementation to context, accessible
+// useMC adds a wrapper.Memcache implementation to context, accessible
 // by wrapper.GetMC(c)
-func UseMC(c context.Context) context.Context {
+func useMC(c context.Context) context.Context {
 	return wrapper.SetMCFactory(c, func(ci context.Context) wrapper.Memcache {
 		return mcImpl{ctx(c).Context}
 	})

@@ -5,6 +5,7 @@
 package gae
 
 import (
+	"errors"
 	"golang.org/x/net/context"
 
 	"appengine"
@@ -12,15 +13,25 @@ import (
 	"github.com/mjibson/goon"
 )
 
-// Enable adds the appengine Context to c.
-func Enable(c context.Context, gaeCtx appengine.Context) context.Context {
-	return context.WithValue(c, goonContextKey, goon.FromContext(gaeCtx))
-}
-
-// Use calls ALL of this packages Use* methods on c. This enables all
-// gae/wrapper Get* api's.
-func Use(c context.Context) context.Context {
-	return UseDS(UseMC(UseTQ(UseGI(c))))
+// Use adds implementations for the following gae/wrapper interfaces to the
+// context:
+//   * wrapper.Datastore
+//   * wrapper.TaskQueue
+//   * wrapper.Memcache
+//   * wrapper.GlobalInfo
+//
+// These can be retrieved with the "gae/wrapper".Get functions.
+//
+// The implementations are all backed by the real "appengine" SDK functionality,
+// and by "github.com/mjibson/goon".
+//
+// Using this more than once per context.Context will cause a panic.
+func Use(c context.Context, gaeCtx appengine.Context) context.Context {
+	if c.Value(goonContextKey) != nil {
+		panic(errors.New("gae.Use: called twice on the same Context"))
+	}
+	c = context.WithValue(c, goonContextKey, goon.FromContext(gaeCtx))
+	return useDS(useMC(useTQ(useGI(c))))
 }
 
 type key int
