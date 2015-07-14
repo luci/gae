@@ -2,30 +2,27 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package gae
+package prod
 
 import (
 	"time"
 
 	"golang.org/x/net/context"
 
-	"appengine"
+	"infra/gae/libs/gae"
 
-	"infra/gae/libs/wrapper"
+	"google.golang.org/appengine"
 )
 
-// useGI adds a wrapper.GlobalInfo implementation to context, accessible
-// by wrapper.GetGI(c)
+// useGI adds a gae.GlobalInfo implementation to context, accessible
+// by gae.GetGI(c)
 func useGI(c context.Context) context.Context {
-	return wrapper.SetGIFactory(c, func(ci context.Context) wrapper.GlobalInfo {
-		return giImpl{ctx(c).Context, ci}
+	return gae.SetGIFactory(c, func(ci context.Context) gae.GlobalInfo {
+		return giImpl{ci}
 	})
 }
 
-type giImpl struct {
-	appengine.Context
-	ctx context.Context
-}
+type giImpl struct{ context.Context }
 
 func (g giImpl) AccessToken(scopes ...string) (token string, expiry time.Time, err error) {
 	return appengine.AccessToken(g, scopes...)
@@ -34,7 +31,7 @@ func (g giImpl) AppID() string {
 	return appengine.AppID(g)
 }
 func (g giImpl) Datacenter() string {
-	return appengine.Datacenter()
+	return appengine.Datacenter(g)
 }
 func (g giImpl) DefaultVersionHostname() string {
 	return appengine.DefaultVersionHostname(g)
@@ -42,10 +39,7 @@ func (g giImpl) DefaultVersionHostname() string {
 func (g giImpl) InstanceID() string {
 	return appengine.InstanceID()
 }
-func (g giImpl) IsCapabilityDisabled(err error) bool {
-	return appengine.IsCapabilityDisabled(err)
-}
-func (g giImpl) IsDevAppserver() bool {
+func (g giImpl) IsDevAppServer() bool {
 	return appengine.IsDevAppServer()
 }
 func (g giImpl) IsOverQuota(err error) bool {
@@ -61,14 +55,18 @@ func (g giImpl) ModuleName() (name string) {
 	return appengine.ModuleName(g)
 }
 func (g giImpl) Namespace(namespace string) (context.Context, error) {
-	gaeC, err := appengine.Namespace(g, namespace)
+	return appengine.Namespace(g, namespace)
+}
+func (g giImpl) PublicCertificates() ([]gae.GICertificate, error) {
+	certs, err := appengine.PublicCertificates(g)
 	if err != nil {
 		return nil, err
 	}
-	return context.WithValue(g.ctx, goonContextKey, gaeC), nil
-}
-func (g giImpl) PublicCertificates() ([]appengine.Certificate, error) {
-	return appengine.PublicCertificates(g)
+	ret := make([]gae.GICertificate, len(certs))
+	for i, c := range certs {
+		ret[i] = (gae.GICertificate)(c)
+	}
+	return ret, nil
 }
 func (g giImpl) RequestID() string {
 	return appengine.RequestID(g)
