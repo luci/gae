@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d15c1ea_2f9ca0e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-08-09T22:42:34Z",
+      "side": 1,
+      "message": "I would try to avoid passive voice if possible.\n\n\"Because flex doesn\u0027t currently have a memcache service, this includes\na per-process caching service in its place. The per-process cache is\ndistinct from a memcache implementation because it doesn\u0027t have the same\n\u0027fleetwide\u0027 synchronization properties that a real memcache implementation\nhas\"\n\nor something",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7395f2a5_ac9fefd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-08-09T22:42:34Z",
+      "side": 1,
+      "message": "This includes an environment prober to easily generate a Flex Config object.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993f58db_cc29e167",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-08-09T22:42:34Z",
+      "side": 1,
+      "message": "don\u0027t we have a bunch of caches already in luci-go/common? Do we really need to define a new interface ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5dcda0f_b7b5a47d",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-08-09T22:42:34Z",
+      "side": 1,
+      "message": "if the cache had an api like\n\n  GetOrRefresh(key, func() (value interface{}, exp time.Duration, err error))\n\nThen the cache could do all the locking internally without having to have the user do a mutex pool at every usage.",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
