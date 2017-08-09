@@ -50,3 +50,5 @@ Run the following to setup the code review tool and create your first review:
     # See it tested and landed automatically.
 
 Use `git cl help` and `git cl help <cmd>` for more details.
+
+Empty CL to test stuff.
