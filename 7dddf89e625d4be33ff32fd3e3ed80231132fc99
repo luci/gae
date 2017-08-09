@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55d2681a_318ba0e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-09T22:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d15c1ea_2f9ca0e7",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7395f2a5_ac9fefd8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7fea727_dd01d3c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-09T22:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7395f2a5_ac9fefd8",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0d279906_31b04f67",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-09T22:55:33Z",
+      "side": 1,
+      "message": "Soooooo yes, sort of.\n\nI am making an attempt here not to have \"luci/gae\" rely too much on *functional* code in \"luci-go\". It can rely on errors or other little packages, but I would prefer it not actually borrow large chunks of implementation.\n\nAlong those lines, we have no generic \"put item in, get item out\" caching interface. Part of me is OK with that, as in practice different cache users tend to have different needs. OTOH, this specific interface (expiring in-memory item cache) does seem to show up a lot.\n\nIn a world where Flex has memcache, I would delete this and replace it with memcache directly, so in that sense I think this makes sense to keep within \"impl/cloud\". The wrapper between this and the LRU cache is really thin, too, so I don\u0027t think this definition is burdensome. It also lets us explicitly state our expectations about this particular use of the cache, since caches as a general concept can have different parameters.\n\nSooooooo IMO this is the right way to go for this part.",
+      "parentUuid": "993f58db_cc29e167",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5dcda0f_b7b5a47d",
         "filename": "impl/cloud/google.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-09T22:42:34Z",
       "side": 1,
       "message": "if the cache had an api like\n\n  GetOrRefresh(key, func() (value interface{}, exp time.Duration, err error))\n\nThen the cache could do all the locking internally without having to have the user do a mutex pool at every usage.",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "7dddf89e625d4be33ff32fd3e3ed80231132fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521e239b_3a72a1a3",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-09T22:55:33Z",
+      "side": 1,
+      "message": "That\u0027s true. Do you think I should add this to the LRU implementation?",
+      "parentUuid": "a5dcda0f_b7b5a47d",
       "range": {
         "startLine": 68,
         "startChar": 7,
