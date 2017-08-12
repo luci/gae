@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "f3765045_d48c6e35",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-12T00:18:49Z",
+      "side": 1,
+      "message": "probe?",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 49
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f42522df_5f4e36ba",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -143,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d703212a_a25e916f",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-12T00:18:49Z",
+      "side": 1,
+      "message": "Yeah, I understand. The number 16K just looks arbitrary and large :)",
+      "parentUuid": "cc9e4c49_b06cd053",
+      "range": {
+        "startLine": 71,
+        "startChar": 43,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6980ccf_e3faf1a8",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -187,6 +234,30 @@
       "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "259a35f7_ca08eb4d",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-12T00:18:49Z",
+      "side": 1,
+      "message": "Ack, though ctxhttp does a little bit extra :)",
+      "parentUuid": "44669208_d754481c",
+      "range": {
+        "startLine": 88,
+        "startChar": 15,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -331,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "0d07837e_2cb060d3",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-12T00:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a76a8964_3e384732",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5adb40d6_27cbde60",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -425,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "9339590a_ef37da38",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-12T00:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fdd787a1_329109c2",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "964eb841_50d3f7af",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -472,6 +591,30 @@
     },
     {
       "key": {
+        "uuid": "01895798_3fadd698",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-12T00:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad58ded8_66edc0aa",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 38
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09de0e77_873ba218",
         "filename": "impl/cloud/logger.go",
         "patchSetId": 3
@@ -507,6 +650,30 @@
       "side": 1,
       "message": "Think so? ATM I\u0027m counting on Google Cloud Platform\u0027s Go libraries basically working out of the box for my clients, including datastore and logging. I think this isn\u0027t a bad thing, so long as \"out of the box\" is acceptable. In this case, I bet it uses DefaultTokenSource. Less code to maintain and fewer requirements that need to impose.\n\nI agree that we have a good AccessToken implementation, though. WDYT?",
       "parentUuid": "09de0e77_873ba218",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383551d5_e1e0469f",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-12T00:18:49Z",
+      "side": 1,
+      "message": "If we are using DefaultTokenSource everywhere, we shouldn\u0027t make ServiceProvider interface public then, because its \u0027AccessToken\u0027 method now applies only to some arbitrary (from POV of the user) subset of the RPC calls. It\u0027s either should be used everywhere, or not be exposed via public API of the package (in which case we declare that the package uses DefaultTokenSource for everything).",
+      "parentUuid": "bfb85599_ce07b0a6",
       "range": {
         "startLine": 35,
         "startChar": 5,
