@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b1e7e39e_8ded574e",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3765045_d48c6e35",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 49
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f42522df_5f4e36ba",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -190,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "74c35661_fb525c63",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:54:45Z",
+      "side": 1,
+      "message": "Oh fair. I\u0027ll shrink it to 1024.",
+      "parentUuid": "d703212a_a25e916f",
+      "range": {
+        "startLine": 71,
+        "startChar": 43,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6980ccf_e3faf1a8",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -249,6 +297,30 @@
       "side": 1,
       "message": "Ack, though ctxhttp does a little bit extra :)",
       "parentUuid": "44669208_d754481c",
+      "range": {
+        "startLine": 88,
+        "startChar": 15,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef57d11_245500f7",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:54:45Z",
+      "side": 1,
+      "message": "Chatted offline, will stick with this b/c the difference isn\u0027t consequential.",
+      "parentUuid": "259a35f7_ca08eb4d",
       "range": {
         "startLine": 88,
         "startChar": 15,
