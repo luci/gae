@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49e15282_81d85e5b",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b5a8d1_2570c44f",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc0e6ca4_cf6d0b20",
         "filename": "impl/cloud/context.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-11T22:55:19Z",
       "side": 1,
       "message": "I don\u0027t see a connection between this comment and useInfo(c, \u0026gi) :(",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 49
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bac1307_c2cb46e5",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "oops, sorry this made sense before I restructured things a bit :)",
+      "parentUuid": "bc0e6ca4_cf6d0b20",
       "range": {
         "startLine": 174,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cc9e4c49_b06cd053",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "And they\u0027re small memory-wise, so I think that\u0027s fine. LRU doesn\u0027t use space if items aren\u0027t added to it.",
+      "parentUuid": "f42522df_5f4e36ba",
+      "range": {
+        "startLine": 71,
+        "startChar": 43,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6980ccf_e3faf1a8",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-11T22:55:19Z",
       "side": 1,
       "message": "please use ctxhttp so this call is cancelable and supports deadlines",
+      "range": {
+        "startLine": 88,
+        "startChar": 15,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44669208_d754481c",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Using \"*http.Request.WithContext\". Done.",
+      "parentUuid": "f6980ccf_e3faf1a8",
       "range": {
         "startLine": 88,
         "startChar": 15,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "03b46883_654e73b7",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59057802_d83522b1",
+      "range": {
+        "startLine": 90,
+        "startChar": 18,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2aeb9ca_0b5af9fc",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "2c323b16_a4c18d94",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2aeb9ca_0b5af9fc",
+      "range": {
+        "startLine": 95,
+        "startChar": 18,
+        "endLine": 95,
+        "endChar": 33
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d6754a0_eeaaed91",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2017-08-11T22:55:19Z",
       "side": 1,
       "message": "This is also most likely a transient error (e.g read timeout).\n\nYou may also read the entire body into a buffer first (and error here is transient), and attempt to decode it later (any error here is fatal).",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76a8964_3e384732",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "I created an error tracking reader which retains I/O errors. I now check that reader to determine if the error was due to the underlying body. This retains the performance / memory / implementation benefits of streaming decode while allowing us to distinguish between JSON and Body errors.",
+      "parentUuid": "7d6754a0_eeaaed91",
       "range": {
         "startLine": 100,
         "startChar": 18,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "244ecd08_f1d5354d",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5adb40d6_27cbde60",
+      "range": {
+        "startLine": 124,
+        "startChar": 34,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7723506f_b8881978",
         "filename": "impl/cloud/google.go",
         "patchSetId": 3
@@ -197,6 +389,30 @@
       "writtenOn": "2017-08-11T22:55:19Z",
       "side": 1,
       "message": "There may be complex bugs here between interaction of 3 layers of caches:\n1. On GCE (and Flex) google.DefaultTokenSource has internal cache. E.g. calling Token() twice in a row will return exact same token. The caching period is not documented, but I believe it is 10min (so Token() will refresh the token when the cached one is \u003c10min to expiration).\n2. The cache in this CL.\n3. The cache in luci-go auth libraries.\n\nAn example of a potential bug is token refresh code path being hit very rapidly when the token is close to its expiration time. The code may assume that calling ts.Token() produces a fresh token, while in fact it will return exact same one as before.\n\nI can\u0027t tell for sure it will happen, just heads up.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd787a1_329109c2",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Good to know. Implementing randomized expiration might help. I suppose a lot of this depends on what the actual expiration period is. Hopefully it\u0027s large enough that refreshes won\u0027t happen before the original TokenSource rotates.",
+      "parentUuid": "7723506f_b8881978",
       "range": {
         "startLine": 152,
         "startChar": 1,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "ad58ded8_66edc0aa",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Good point. Done!",
+      "parentUuid": "964eb841_50d3f7af",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 38
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09de0e77_873ba218",
         "filename": "impl/cloud/logger.go",
         "patchSetId": 3
@@ -243,6 +483,30 @@
       "writtenOn": "2017-08-11T22:55:19Z",
       "side": 1,
       "message": "How does authentication to Cloud Logging happens? We should funnel all authentication through ServiceProvider.GetAccessToken implementation.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb85599_ce07b0a6",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-12T00:08:50Z",
+      "side": 1,
+      "message": "Think so? ATM I\u0027m counting on Google Cloud Platform\u0027s Go libraries basically working out of the box for my clients, including datastore and logging. I think this isn\u0027t a bad thing, so long as \"out of the box\" is acceptable. In this case, I bet it uses DefaultTokenSource. Less code to maintain and fewer requirements that need to impose.\n\nI agree that we have a good AccessToken implementation, though. WDYT?",
+      "parentUuid": "09de0e77_873ba218",
       "range": {
         "startLine": 35,
         "startChar": 5,
