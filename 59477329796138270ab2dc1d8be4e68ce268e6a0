@@ -755,6 +755,30 @@
       "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f51a3c_b60657cb",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-14T23:00:51Z",
+      "side": 1,
+      "message": "Ping.",
+      "parentUuid": "383551d5_e1e0469f",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
