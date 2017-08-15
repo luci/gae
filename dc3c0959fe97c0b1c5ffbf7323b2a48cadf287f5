@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d651055_40c41893",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-15T20:47:50Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "43142dd5_c6e6d9c1",
+      "range": {
+        "startLine": 109,
+        "startChar": 42,
+        "endLine": 109,
+        "endChar": 66
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e74f10bc_eb52ab2d",
         "filename": "impl/cloud/google.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cbc30488_63a8d565",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-15T20:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74f10bc_eb52ab2d",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74487ef8_e0823c5c",
         "filename": "impl/cloud/google.go",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-08-15T18:20:35Z",
       "side": 1,
       "message": "same here, we can use \"https://www.googleapis.com/auth/cloud-platform\" (I suspect iamAPI.CloudPlatformScope is already it...).\n\n(Actually it is weird CloudPlatformScope is used here currently instead of more restricted \"https://www.googleapis.com/auth/iam\")",
+      "range": {
+        "startLine": 192,
+        "startChar": 33,
+        "endLine": 192,
+        "endChar": 58
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a93353e3_6738a5a0",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-15T20:47:50Z",
+      "side": 1,
+      "message": "Do you think we should be specific here? Apparently both are viable for that API call.",
+      "parentUuid": "74487ef8_e0823c5c",
       "range": {
         "startLine": 192,
         "startChar": 33,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "79cfeedd_655817cf",
+        "filename": "impl/cloud/serviceprovider.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-15T20:47:50Z",
+      "side": 1,
+      "message": "I\u0027ve inverted this proposal and bound a per-request TokenSource to a common cache key. WDYT?",
+      "parentUuid": "c2338c9f_87be3b6d",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "922330ca_682cbfd4",
         "filename": "impl/cloud/serviceprovider.go",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2017-08-15T18:20:35Z",
       "side": 1,
       "message": "Strictly speaking this is now susceptible to \"cache expiration stampeede\" again, since oauth2 library does very naive caching (https://github.com/golang/oauth2/blob/master/oauth2.go#L257).\n\nIt is probably not a big deal on GCE where token refresh is very cheap local RPC.\n\nIt may be more hurtful when this code is running outside of GCE (using either user\u0027s refresh tokens or service account keys), since in this case the token refresh procedure makes slow roundtrip to the Cloud. But we can probably ignore this case, it should not be used in production.",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 69
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96bf427e_26c292d0",
+        "filename": "impl/cloud/serviceprovider.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-15T20:47:50Z",
+      "side": 1,
+      "message": "Yeah that\u0027s essentially what I was thinking. We could actually juggle TokenSource the same way we are juggling individual tokens. I\u0027ll add a note and we can revisit if this is problematic.",
+      "parentUuid": "922330ca_682cbfd4",
       "range": {
         "startLine": 46,
         "startChar": 51,
