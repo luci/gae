@@ -779,6 +779,30 @@
       "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c5b573_a30824c1",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-15T15:17:40Z",
+      "side": 1,
+      "message": "In order to make this work, I\u0027m going to have to change the ServiceProvider API to supply a TokenSource. This means, in turn:\n\n1) No need to actually cache tokens, just token sources.\n2) Removal of the anti-stampede logic, since individual token caching is the responsibility of the token source.\n\nI think these are fine, b/c on GCE this will just be a static GCE metadata token. WDYT?",
+      "parentUuid": "93f51a3c_b60657cb",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "59477329796138270ab2dc1d8be4e68ce268e6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
