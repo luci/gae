@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43142dd5_c6e6d9c1",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-15T18:20:35Z",
+      "side": 1,
+      "message": "It will be more efficient to use \"https://www.googleapis.com/auth/cloud-platform\" scope for everything (less tokens to generate). Also, I\u0027m not 100% sure Flex VMs have individual Datastore and Cloud Logging scopes (but I suspect they do have cloud-platform scope).",
+      "range": {
+        "startLine": 109,
+        "startChar": 42,
+        "endLine": 109,
+        "endChar": 66
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74f10bc_eb52ab2d",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-15T18:20:35Z",
+      "side": 1,
+      "message": "this comment is no longer correct, I think...",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74487ef8_e0823c5c",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-15T18:20:35Z",
+      "side": 1,
+      "message": "same here, we can use \"https://www.googleapis.com/auth/cloud-platform\" (I suspect iamAPI.CloudPlatformScope is already it...).\n\n(Actually it is weird CloudPlatformScope is used here currently instead of more restricted \"https://www.googleapis.com/auth/iam\")",
+      "range": {
+        "startLine": 192,
+        "startChar": 33,
+        "endLine": 192,
+        "endChar": 58
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2338c9f_87be3b6d",
+        "filename": "impl/cloud/serviceprovider.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-15T18:20:35Z",
+      "side": 1,
+      "message": "eh, this inconsistency makes me sad :( Not sure what to do about it other than returning back to AccessToken(...) interface and constructing oauth2.TokenSource on the fly on top of ServiceProvider.AccessToken(...) (to be consumed by Cloud libraries like datastore).\n\ntype tokenSource struct {\n  sp ServiceProvider\n  ctx context.Context\n  scopes []string\n}\n\nfunc (ts *tokenSource) Token() (*oauth2.Token, error) {\n  return sp.AccessToken(ts.ctx, ts.scopes...)\n}\n\nThat way we are not \"caching\" the context. Datastore and Cloud Logging will get a long lived context, and users of AccessToken API will get whatever context has been passed by them.",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "922330ca_682cbfd4",
+        "filename": "impl/cloud/serviceprovider.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-15T18:20:35Z",
+      "side": 1,
+      "message": "Strictly speaking this is now susceptible to \"cache expiration stampeede\" again, since oauth2 library does very naive caching (https://github.com/golang/oauth2/blob/master/oauth2.go#L257).\n\nIt is probably not a big deal on GCE where token refresh is very cheap local RPC.\n\nIt may be more hurtful when this code is running outside of GCE (using either user\u0027s refresh tokens or service account keys), since in this case the token refresh procedure makes slow roundtrip to the Cloud. But we can probably ignore this case, it should not be used in production.",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 69
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
