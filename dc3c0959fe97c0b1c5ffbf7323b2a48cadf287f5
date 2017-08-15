@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "e347b096_2a87c2b9",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-15T22:19:20Z",
+      "side": 1,
+      "message": "iamAPI.CloudPlatformScope is fine.\n\nI was surprised that Datastore and Cloud Logging used narrow scopes, but SignBytes used broad cloud-platform scope. It was inconsistent. Now they all consistently use cloud-platform.",
+      "parentUuid": "a93353e3_6738a5a0",
+      "range": {
+        "startLine": 192,
+        "startChar": 33,
+        "endLine": 192,
+        "endChar": 58
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2338c9f_87be3b6d",
         "filename": "impl/cloud/serviceprovider.go",
         "patchSetId": 6
@@ -187,6 +211,30 @@
       "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d88afa3_09b41289",
+        "filename": "impl/cloud/serviceprovider.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-08-15T22:19:20Z",
+      "side": 1,
+      "message": "lgtm",
+      "parentUuid": "79cfeedd_655817cf",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "dc3c0959fe97c0b1c5ffbf7323b2a48cadf287f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
