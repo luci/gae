@@ -22,6 +22,30 @@
       "revId": "2f64be2b0c6def4a5c60d0695876733eb7b2e765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a0539f_5f31acb1",
+        "filename": "impl/cloud/google.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-15T22:42:03Z",
+      "side": 1,
+      "message": "oops, yep.",
+      "parentUuid": "f505491f_eb4556d8",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "2f64be2b0c6def4a5c60d0695876733eb7b2e765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
