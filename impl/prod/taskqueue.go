@@ -27,6 +27,15 @@ import (
 	"google.golang.org/appengine/taskqueue"
 )
 
+const (
+	// AddMultiLimit is the maximum number of tasks that can be added in one
+	// taskqueue.AddMulti call.
+	AddMultiLimit = 100
+	// DeleteMultiLimit is the maximum number of tasks that can be added in one
+	// taskqueue.DeleteMulti call.
+	DeleteMultiLimit = 100
+)
+
 // useTQ adds a gae.TaskQueue implementation to context, accessible
 // by gae.GetTQ(c)
 func useTQ(c context.Context) context.Context {
@@ -107,38 +116,58 @@ func tqMR2F(ns []*taskqueue.Task) []*tq.Task {
 	return ret
 }
 
-func (t tqImpl) AddMulti(tasks []*tq.Task, queueName string, cb tq.RawTaskCB) error {
-	realTasks, err := taskqueue.AddMulti(t.aeCtx, tqMF2R(tasks), queueName)
-	if err != nil {
-		if me, ok := err.(appengine.MultiError); ok {
-			for i, err := range me {
-				tsk := (*taskqueue.Task)(nil)
-				if realTasks != nil {
-					tsk = realTasks[i]
-				}
-				cb(tqR2F(tsk), err)
-			}
-			err = nil
+func makeBatches(tasks []*taskqueue.Task, limit int) [][]*taskqueue.Task {
+	batches := make([][]*taskqueue.Task, 0, len(tasks)/limit+1)
+	for len(tasks) > 0 {
+		batch := tasks
+		if len(batch) > limit {
+			batch = batch[:limit]
 		}
-	} else {
-		for _, tsk := range realTasks {
-			cb(tqR2F(tsk), nil)
+		batches = append(batches, batch)
+		tasks = tasks[len(batch):]
+	}
+	return batches
+}
+
+func (t tqImpl) AddMulti(tasks []*tq.Task, queueName string, cb tq.RawTaskCB) error {
+	for _, realTasks := range makeBatches(tqMF2R(tasks), AddMultiLimit) {
+		added, err := taskqueue.AddMulti(t.aeCtx, realTasks, queueName)
+		switch err := err.(type) {
+		case appengine.MultiError:
+			for i, e := range err {
+				tsk := (*taskqueue.Task)(nil)
+				if added != nil && i < len(added) {
+					tsk = added[i]
+				}
+				cb(tqR2F(tsk), e)
+			}
+		case nil:
+			for _, tsk := range added {
+				cb(tqR2F(tsk), nil)
+			}
+		default:
+			return err
 		}
 	}
-	return err
+	return nil
 }
 
 func (t tqImpl) DeleteMulti(tasks []*tq.Task, queueName string, cb tq.RawCB) error {
-	err := taskqueue.DeleteMulti(t.aeCtx, tqMF2R(tasks), queueName)
-	if me, ok := err.(appengine.MultiError); ok {
-		for i, err := range me {
-			if err != nil {
-				cb(i, err)
+	offset := 0
+	for _, realTasks := range makeBatches(tqMF2R(tasks), DeleteMultiLimit) {
+		err := taskqueue.DeleteMulti(t.aeCtx, realTasks, queueName)
+		if me, ok := err.(appengine.MultiError); ok {
+			for i, err := range me {
+				if err != nil {
+					cb(offset+i, err)
+				}
 			}
+			err = nil
 		}
-		err = nil
+		offset += len(realTasks)
+		return err
 	}
-	return err
+	return nil
 }
 
 func (t tqImpl) Lease(maxTasks int, queueName string, leaseTime time.Duration) ([]*tq.Task, error) {
