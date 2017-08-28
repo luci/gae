@@ -118,6 +118,30 @@
       "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3a983a_87cccec7",
+        "filename": "impl/prod/taskqueue.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2017-08-28T22:52:10Z",
+      "side": 1,
+      "message": "this CL removes the limitation at the impl/prod level. Before this CL impl/prod fails on requests that go beyond the limit. After the CL impl/prod does not fail. In fact, the constraint it returns is incorrect now: there is no constraint. No matter how many tasks is being added, impl/prod will take them all. This is how the limitation is removed at the impl/prod level. The limitation of the remote system does not matter now, because no other piece of code uses the remote system directly. All access to the remote API is done through impl/prod.\n\nThere is no need for batcher because there is no problem",
+      "parentUuid": "033ad832_7abfbd26",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
