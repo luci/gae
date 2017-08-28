@@ -22,6 +22,30 @@
       "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e37b35_3824c676",
+        "filename": "impl/prod/taskqueue.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2017-08-28T21:43:51Z",
+      "side": 1,
+      "message": "i think this CL removes the need for taskqueue.RawInterface.Constraints because it essentially removes the constraint.\n\nI intend to delete taskqueue.Constraints, taskqueue.RawInterface.Constraints.\n\nI\u0027d delete constraints package too if batching wasn\u0027t implemented in prod/raw_datastore.go.\n\nDo you agree?",
+      "parentUuid": "5120ac3b_d34020be",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
