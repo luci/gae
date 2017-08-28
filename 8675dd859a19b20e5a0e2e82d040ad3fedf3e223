@@ -46,6 +46,30 @@
       "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df9296a_824ed826",
+        "filename": "impl/prod/taskqueue.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-28T21:45:05Z",
+      "side": 1,
+      "message": "No, the whole point of the constraints is that different \"impl/\" variants can express their limitations to common batching logic back in the \"services/\" package. e.g., if \"cloud\" ends up having a limit of 500 and \"prod\" has a limit of 1000.",
+      "parentUuid": "54e37b35_3824c676",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
