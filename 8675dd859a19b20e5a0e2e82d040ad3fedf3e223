@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5120ac3b_d34020be",
+        "filename": "impl/prod/taskqueue.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-08-28T20:48:00Z",
+      "side": 1,
+      "message": "There is already a \"constraints\" struct: https://chromium.googlesource.com/infra/luci/gae/+/master/service/taskqueue/raw_interface.go#31\n\nThere is also already a Batcher for Add: https://chromium.googlesource.com/infra/luci/gae/+/master/service/taskqueue/batcher.go\n\nIf you are going to replace this, please replace it completely.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
