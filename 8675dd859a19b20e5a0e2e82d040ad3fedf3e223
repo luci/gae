@@ -70,6 +70,30 @@
       "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547d13df_70cef45f",
+        "filename": "impl/prod/taskqueue.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2017-08-28T21:52:23Z",
+      "side": 1,
+      "message": "this CL removes that limitation, so there is nothing to express. There is no need in a common batching logic if there is no limitation.",
+      "parentUuid": "2df9296a_824ed826",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "8675dd859a19b20e5a0e2e82d040ad3fedf3e223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
