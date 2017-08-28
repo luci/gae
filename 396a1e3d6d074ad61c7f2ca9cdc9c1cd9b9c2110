@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f85a0c06_9e127d07",
+        "filename": "impl/prod/taskqueue.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-08-28T21:59:26Z",
+      "side": 1,
+      "message": "wdyt about making this logic in a helper subpackage of service/taskqueue, and have it operate on []*tq.Task? Then the various implementations can all use the same batching logic (with different limits), and the batching logic can have separate tests.",
+      "revId": "396a1e3d6d074ad61c7f2ca9cdc9c1cd9b9c2110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
