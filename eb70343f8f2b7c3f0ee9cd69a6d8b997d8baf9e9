@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27c06ab2_55dca521",
+        "filename": "service/taskqueue/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-08-29T15:56:25Z",
+      "side": 1,
+      "message": "I would also document this behavior on both methods too.",
+      "revId": "eb70343f8f2b7c3f0ee9cd69a6d8b997d8baf9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
