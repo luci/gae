@@ -22,9 +22,12 @@ import (
 
 type key int
 
-var (
-	rawDatastoreKey       key
-	rawDatastoreFilterKey key = 1
+const (
+	rawDatastoreKey key = iota
+	rawDatastoreFilterKey
+	rawDatastoreBatchKey
+	rawDatastoreBatchQuerySizeKey
+	rawDatastoreBatchQueryCallbackKey
 )
 
 // RawFactory is the function signature for factory methods compatible with
@@ -61,7 +64,10 @@ func rawWithFilters(c context.Context, filter ...RawFilter) RawInterface {
 	for _, f := range filter {
 		ret = f(c, ret)
 	}
-	return applyCheckFilter(c, ret)
+
+	ret = applyBatchFilter(c, ret)
+	ret = applyCheckFilter(c, ret)
+	return ret
 }
 
 // Raw gets the RawInterface implementation from context.
@@ -107,4 +113,59 @@ func AddRawFilters(c context.Context, filts ...RawFilter) context.Context {
 func GetKeyContext(c context.Context) KeyContext {
 	ri := info.Raw(c)
 	return MkKeyContext(ri.FullyQualifiedAppID(), ri.GetNamespace())
+}
+
+// WithBatching enables or disables automatic operation batching. Batching is
+// enabled by default.
+//
+// Datastore has built-in constraints that it applies to some operations:
+//
+//	- For Get, Put, and Delete, there isa maximum number of elements that can
+//	  be processed in a single call.
+//	- For queries (Run), there is a maximum amount of time that can pass from
+//	  initial query execution before the query times out.
+//
+// Batching masks these limitations, providing an interface that meets user
+// expectations. Behind the scenes, it splits large operations into a series of
+// parallel smaller operations and aggregates the results together.
+func WithBatching(c context.Context, enabled bool) context.Context {
+	return context.WithValue(c, rawDatastoreBatchKey, enabled)
+}
+
+func getBatching(c context.Context) (is, ok bool) {
+	is, ok = c.Value(rawDatastoreBatchKey).(bool)
+	return
+}
+
+// WithQueryBatchSize sets the query batch size. If batching is enabled
+// (WithBatching), the query batch size is the number of query results returned
+// in a single batch.
+//
+// Datastore queries have an inherent timeout. When querying large data sets,
+// or spending large amounts of time processing each element, the query may
+// time out and fail. Query batching mitigates this by automatically limiting
+// queries and paging them together using cursors.
+//
+// If the size is set to <= 0, query batching will use the default
+// implementation-specific QueryBatchSize constraint.
+func WithQueryBatchSize(c context.Context, size int) context.Context {
+	return context.WithValue(c, rawDatastoreBatchQuerySizeKey, size)
+}
+
+func getQueryBatchSize(c context.Context) int {
+	v, _ := c.Value(rawDatastoreBatchQuerySizeKey).(int)
+	return v
+}
+
+// WithQueryBatchCallback sets the query batch callback. If batching is enabled
+// (WithBatching), this callback will be invoked in between query batches.
+//
+// The callback can be set to nil to remove it.
+func WithQueryBatchCallback(c context.Context, cb QueryBatchCallback) context.Context {
+	return context.WithValue(c, rawDatastoreBatchQueryCallbackKey, cb)
+}
+
+func queryBatchCallback(c context.Context) QueryBatchCallback {
+	cb, _ := c.Value(rawDatastoreBatchQueryCallbackKey).(QueryBatchCallback)
+	return cb
 }
