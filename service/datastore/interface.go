@@ -125,19 +125,20 @@ func AllocateIDs(c context.Context, ent ...interface{}) error {
 		keys[i] = key.Incomplete()
 	}
 
-	var et errorTracker
-	it := mma.iterator(et.init(mma))
-	err = filterStop(Raw(c).AllocateIDs(keys, func(key *Key, err error) error {
-		it.next(func(mat *multiArgType, v reflect.Value) error {
-			if err != nil {
-				return err
-			}
+	et := newErrorTracker(mma)
+	err = filterStop(Raw(c).AllocateIDs(keys, func(idx int, key *Key, err error) error {
+		index := mma.index(idx)
 
-			if !mat.setKey(v, key) {
-				return MakeErrInvalidKey("failed to export key [%s]", key).Err()
-			}
+		if err != nil {
+			et.trackError(index, err)
 			return nil
-		})
+		}
+
+		mat, v := mma.get(index)
+		if !mat.setKey(v, key) {
+			et.trackError(index, MakeErrInvalidKey("failed to export key [%s]", key).Err())
+			return nil
+		}
 
 		return nil
 	}))
@@ -296,6 +297,17 @@ func RunInTransaction(c context.Context, f func(c context.Context) error, opts *
 // callback returns nil. If it returns `Stop`, the query will stop and Run
 // will return nil. Otherwise, the query will stop and Run will return the
 // user's error.
+//
+// If batching is enabled (WithBatching), queries will automatically be broken
+// into a series of iterative fixed-size sub-queries. Batching uses cursors to
+// chain the iterations together. The size of batches defaults to the
+// QueryBatchSize constraint, but can be overridden using WithQueryBatchSize.
+//
+// WithQueryBatchCallback can be used to register a callback that will be
+// invoked in between batches.
+//
+// For projection queries, batching may cause duplicate results to appear;
+// therefore, it is disabled by default.
 //
 // Run may also stop on the first datastore error encountered, which can occur
 // due to flakiness, timeout, etc. If it encounters such an error, it will
@@ -490,12 +502,9 @@ func Exists(c context.Context, ent ...interface{}) (*ExistsResult, error) {
 		return nil, nil
 	}
 
-	var bt boolTracker
-	it := mma.iterator(bt.init(mma))
-	err = filterStop(Raw(c).GetMulti(keys, nil, func(_ PropertyMap, err error) error {
-		it.next(func(*multiArgType, reflect.Value) error {
-			return err
-		})
+	bt := newBoolTracker(mma)
+	err = filterStop(Raw(c).GetMulti(keys, nil, func(idx int, _ PropertyMap, err error) error {
+		bt.trackExistsResult(mma.index(idx), err)
 		return nil
 	}))
 	if err == nil {
@@ -541,16 +550,22 @@ func Get(c context.Context, dst ...interface{}) error {
 		return nil
 	}
 
-	var et errorTracker
-	it := mma.iterator(et.init(mma))
+	et := newErrorTracker(mma)
 	meta := NewMultiMetaGetter(pms)
-	err = filterStop(Raw(c).GetMulti(keys, meta, func(pm PropertyMap, err error) error {
-		it.next(func(mat *multiArgType, slot reflect.Value) error {
-			if err != nil {
-				return err
-			}
-			return mat.setPM(slot, pm)
-		})
+	err = filterStop(Raw(c).GetMulti(keys, meta, func(idx int, pm PropertyMap, err error) error {
+		index := mma.index(idx)
+
+		if err != nil {
+			et.trackError(index, err)
+			return nil
+		}
+
+		mat, v := mma.get(index)
+		if err := mat.setPM(v, pm); err != nil {
+			et.trackError(index, err)
+			return nil
+		}
+
 		return nil
 	}))
 
@@ -610,21 +625,23 @@ func putRaw(raw RawInterface, kctx KeyContext, src []interface{}) error {
 		return nil
 	}
 
-	i := 0
-	var et errorTracker
-	it := mma.iterator(et.init(mma))
-	err = filterStop(raw.PutMulti(keys, vals, func(key *Key, err error) error {
-		it.next(func(mat *multiArgType, slot reflect.Value) error {
-			if err != nil {
-				return err
-			}
-			if key != keys[i] {
-				mat.setKey(slot, key)
-			}
-			return nil
-		})
+	et := newErrorTracker(mma)
+	err = filterStop(raw.PutMulti(keys, vals, func(idx int, key *Key, err error) error {
+		index := mma.index(idx)
 
-		i++
+		if err != nil {
+			et.trackError(index, err)
+			return nil
+		}
+
+		if key != keys[idx] {
+			mat, v := mma.get(index)
+			if !mat.setKey(v, key) {
+				et.trackError(index, MakeErrInvalidKey("failed to export key [%s]", key).Err())
+				return nil
+			}
+		}
+
 		return nil
 	}))
 
@@ -673,13 +690,12 @@ func Delete(c context.Context, ent ...interface{}) error {
 		return nil
 	}
 
-	var et errorTracker
-	it := mma.iterator(et.init(mma))
-	err = filterStop(Raw(c).DeleteMulti(keys, func(err error) error {
-		it.next(func(*multiArgType, reflect.Value) error {
-			return err
-		})
-
+	et := newErrorTracker(mma)
+	err = filterStop(Raw(c).DeleteMulti(keys, func(idx int, err error) error {
+		if err != nil {
+			index := mma.index(idx)
+			et.trackError(index, err)
+		}
 		return nil
 	}))
 	if err == nil {

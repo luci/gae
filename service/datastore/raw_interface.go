@@ -43,6 +43,7 @@ type RawRunCB func(key *Key, val PropertyMap, getCursor CursorCB) error
 
 // GetMultiCB is the callback signature provided to RawInterface.GetMulti
 //
+//   - idx is the index of the entity
 //   - val is the data of the entity
 //     * It may be nil if some of the keys to the GetMulti were bad, since all
 //       keys are validated before the RPC occurs!
@@ -50,12 +51,13 @@ type RawRunCB func(key *Key, val PropertyMap, getCursor CursorCB) error
 //
 // Return nil to continue iterating, or an error to stop. If you return the
 // error `Stop`, then GetMulti will stop the query and return nil.
-type GetMultiCB func(val PropertyMap, err error) error
+type GetMultiCB func(idx int, val PropertyMap, err error) error
 
 // NewKeyCB is the callback signature provided to RawInterface.PutMulti and
 // RawInterface.AllocateIDs. It is invoked once for each positional key that
 // was generated as the result of a call.
 //
+//   - int is the index of the entry
 //   - key is the new key for the entity (if the original was incomplete)
 //     * It may be nil if some of the keys/vals to the PutMulti were bad, since
 //       all keys are validated before the RPC occurs!
@@ -63,15 +65,16 @@ type GetMultiCB func(val PropertyMap, err error) error
 //
 // Return nil to continue iterating, or an error to stop. If you return the
 // error `Stop`, then PutMulti will stop the query and return nil.
-type NewKeyCB func(key *Key, err error) error
+type NewKeyCB func(idx int, key *Key, err error) error
 
 // DeleteMultiCB is the callback signature provided to RawInterface.DeleteMulti
 //
+//   - idx is the index of the entity
 //   - err is an error associated with deleting this entity.
 //
 // Return nil to continue iterating, or an error to stop. If you return the
 // error `Stop`, then DeleteMulti will stop the query and return nil.
-type DeleteMultiCB func(err error) error
+type DeleteMultiCB func(idx int, err error) error
 
 // Constraints represent implementation constraints.
 type Constraints struct {
