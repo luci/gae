@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9435a906_c167bcf0",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-05T22:15:55Z",
+      "side": 1,
+      "message": "I think this comment leaked from the next CL?",
+      "range": {
+        "startLine": 301,
+        "startChar": 6,
+        "endLine": 301,
+        "endChar": 14
+      },
+      "revId": "1911c00c07e3f136e38eb1164096883e2af2aacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acf5518_c5296e58",
+        "filename": "service/datastore/multiarg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-05T22:15:55Z",
+      "side": 1,
+      "message": "element",
+      "range": {
+        "startLine": 341,
+        "startChar": 20,
+        "endLine": 341,
+        "endChar": 26
+      },
+      "revId": "1911c00c07e3f136e38eb1164096883e2af2aacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
