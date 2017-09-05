@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6452107_bd4ff9a6",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-05T22:24:06Z",
+      "side": 1,
+      "message": "should also detect the case where everything fits in one batch",
+      "revId": "2b84fd8ff9306a3009364909d0bcd8b08224e1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f14f1e3_1254dcda",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-05T22:24:06Z",
+      "side": 1,
+      "message": "LETS DO THE TIME WARP AGAAAIIIINNNNNN",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "2b84fd8ff9306a3009364909d0bcd8b08224e1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
