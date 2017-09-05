@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8f4e9bb_03e6e78a",
+        "filename": "impl/memory/datastore_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-05T22:09:31Z",
+      "side": 1,
+      "message": "why `gctx`? goroutine context?",
+      "range": {
+        "startLine": 123,
+        "startChar": 71,
+        "endLine": 123,
+        "endChar": 75
+      },
+      "revId": "e44d48d870688e5dd668fc136f1dc4fa8f5ada7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b3a90d_8fa48ba9",
+        "filename": "service/datastore/datastore_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-05T22:09:31Z",
+      "side": 1,
+      "message": "oops?",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 12
+      },
+      "revId": "e44d48d870688e5dd668fc136f1dc4fa8f5ada7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b2697c0_e6d00634",
+        "filename": "service/datastore/raw_interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-05T22:09:31Z",
+      "side": 1,
+      "message": "can we also document somewhere that Constraints is now /required/ to be implemented, even for the most basic implementation? And that returning the 0-value is fine.",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "e44d48d870688e5dd668fc136f1dc4fa8f5ada7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
