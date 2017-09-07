@@ -81,6 +81,30 @@
       "revId": "2b84fd8ff9306a3009364909d0bcd8b08224e1ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f0cdab_2292f814",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-07T01:53:30Z",
+      "side": 1,
+      "message": "Update: TL;DR, I don\u0027t think there\u0027s a good way to do this.\n\nFirstly, it seems like timeout varies from 5s (measured on testing instance), default w/ no deadline set on Context. Online reports include 30s, 2.5m, 4m (reported on StackDriver) based on circumstance and query type, so there isn\u0027t a really good way to hard-code a timeout.\n\nThe timeout can be recognized via error message; however, by the time it times out, it\u0027s too late to get a cursor (also returns a timeout error). Getting a cursor for each entity \"just in case\" slows query down ~20x. Underlying datastore doesn\u0027t expose returned query entity block side. Time user spends in callback is not controllable.\n\nNDB implements a batch size: https://cloud.google.com/appengine/docs/standard/python/ndb/queryclass#kwdargs_options\n\nHowever, batch size is more for efficiency, and would require underlying store cooperation.\n\nI think the solution here is to actually eliminate query batching and update the documentation on the Context deadline. WDYT?",
+      "parentUuid": "e2d0321d_d31fbe8f",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "2b84fd8ff9306a3009364909d0bcd8b08224e1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
