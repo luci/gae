@@ -15,7 +15,6 @@
 package datastore
 
 import (
-	"errors"
 	"fmt"
 	"sync/atomic"
 	"testing"
@@ -70,16 +69,14 @@ func TestQueryBatch(t *testing.T) {
 		cf := counterFilter{}
 		c = AddRawFilters(c, cf.filter())
 
-		b := Batcher{}
-
-		// Given "b"'s Size, how many Run calls will be executed to pull "total"
-		// results?
-		expectedBatchRunCalls := func(total int32) int32 {
-			if b.Size <= 0 {
+		// Given query batch size, how many Run calls will be executed to pull
+		// "total" results?
+		expectedBatchRunCalls := func(batchSize, total int32) int32 {
+			if batchSize <= 0 {
 				return 1
 			}
-			exp := total / int32(b.Size)
-			if total%int32(b.Size) != 0 {
+			exp := total / batchSize
+			if total%batchSize != 0 {
 				exp++
 			}
 			return exp
@@ -92,29 +89,29 @@ func TestQueryBatch(t *testing.T) {
 		}
 		cf.run = 0
 
-		for _, sizeBase := range []int{
+		for _, sizeBase := range []int32{
 			1,
 			16,
 			1024,
 			2048,
 		} {
 			// Adjust to hit edge cases.
-			for _, delta := range []int{-1, 0, 1} {
-				b.Size = sizeBase + delta
-				if b.Size <= 0 {
+			for _, delta := range []int32{-1, 0, 1} {
+				batchSize := sizeBase + delta
+				if batchSize <= 0 {
 					continue
 				}
 
-				Convey(fmt.Sprintf(`With a batch filter size %d installed`, b.Size), func() {
+				Convey(fmt.Sprintf(`With a batch filter size %d installed`, batchSize), func() {
 					q := NewQuery("")
 
 					Convey(`Can retrieve all of the items.`, func() {
 						var got []*CommonStruct
-						So(b.GetAll(c, q, &got), ShouldBeNil)
+						So(GetAllBatch(c, batchSize, q, &got), ShouldBeNil)
 						So(got, ShouldResemble, all)
 
 						// One call for every sub-query, plus one to hit Stop.
-						runCalls := (len(all) / b.Size) + 1
+						runCalls := (int32(len(all)) / batchSize) + 1
 						So(cf.run, ShouldEqual, runCalls)
 					})
 
@@ -123,10 +120,10 @@ func TestQueryBatch(t *testing.T) {
 						q = q.Limit(int32(limit))
 
 						var got []*CommonStruct
-						So(b.GetAll(c, q, &got), ShouldBeNil)
+						So(GetAllBatch(c, batchSize, q, &got), ShouldBeNil)
 						So(got, ShouldResemble, all[:limit])
 
-						So(cf.run, ShouldEqual, expectedBatchRunCalls(limit))
+						So(cf.run, ShouldEqual, expectedBatchRunCalls(batchSize, limit))
 					})
 				})
 			}
@@ -140,7 +137,6 @@ func TestQueryBatch(t *testing.T) {
 				// Clear state and configure.
 				cf.run = 0
 				fds.entities = rounds * outerFetchSize
-				b.Size = int(batchSize)
 
 				var (
 					outerCount int32
@@ -153,7 +149,7 @@ func TestQueryBatch(t *testing.T) {
 						q = q.Start(cursor)
 					}
 
-					err := b.Run(c, q, func(v CommonStruct, getCursor CursorCB) (err error) {
+					err := RunBatch(c, batchSize, q, func(v CommonStruct, getCursor CursorCB) (err error) {
 						if v.Value != int64(outerCount) {
 							return fmt.Errorf("query value doesn't match count (%d != %d)", v.Value, outerCount)
 						}
@@ -174,7 +170,7 @@ func TestQueryBatch(t *testing.T) {
 				}
 
 				// Make sure the appropriate number of real queries was executed.
-				expectedRunCount := expectedBatchRunCalls(outerFetchSize) * rounds
+				expectedRunCount := expectedBatchRunCalls(batchSize, outerFetchSize) * rounds
 				if cf.run != expectedRunCount {
 					return fmt.Errorf("unexpected number of raw Run calls (%d != %d)", cf.run, expectedRunCount)
 				}
@@ -188,41 +184,6 @@ func TestQueryBatch(t *testing.T) {
 			// We'll use fetch/batch sizes that are not direct multiples of each other
 			// so we can test some incongruent boundaries.
 			So(testIterativeRun(3, 900, 250), ShouldBeNil)
-		})
-
-		Convey(`With callbacks`, func() {
-			const batchSize = 16
-			var countA int
-			var errA error
-
-			b.Size = batchSize
-			b.Callback = func(context.Context) error {
-				countA++
-				return errA
-			}
-
-			q := NewQuery("")
-
-			Convey(`Executes the callbacks during batching.`, func() {
-				// Get 250% of the batch size. This will result in several full batches
-				// and one partial batch, each of which should get a callback.
-				limit := 2.5 * batchSize
-				cbCount := int(limit / batchSize)
-
-				q = q.Limit(int32(limit))
-				var items []*CommonStruct
-				So(b.GetAll(c, q, &items), ShouldBeNil)
-				So(len(items), ShouldEqual, limit)
-				So(countA, ShouldEqual, cbCount)
-			})
-
-			Convey(`Will stop querying if a callback errors.`, func() {
-				errA = errors.New("test error")
-
-				var items []*CommonStruct
-				So(b.GetAll(c, q, &items), ShouldEqual, errA)
-				So(countA, ShouldEqual, 1)
-			})
 		})
 	})
 }
@@ -239,51 +200,31 @@ func TestPutBatch(t *testing.T) {
 		cf := counterFilter{}
 		c = AddRawFilters(c, cf.filter())
 
-		cbCount := 0
-		var cbErr error
-		b := Batcher{
-			Callback: func(context.Context) error {
-				cbCount++
-				return cbErr
-			},
-		}
+		Convey(`Can put a single round with no callbacks.`, func(convey C) {
+			fds.convey = convey
+			fds.constraints.MaxPutSize = 10
 
-		Convey(`Can put a single round with no callbacks.`, func() {
-			b.Size = 10
 			css := make([]*CommonStruct, 10)
 			for i := range css {
 				css[i] = &CommonStruct{Value: int64(i)}
 			}
 
-			So(b.Put(c, css), ShouldBeNil)
+			So(Put(c, css), ShouldBeNil)
 			So(cf.put, ShouldEqual, 1)
-			So(cbCount, ShouldEqual, 0)
 		})
 
-		Convey(`Can put in batch.`, func() {
-			b.Size = 2
+		Convey(`Can put in batch.`, func(convey C) {
+			fds.convey = convey
+			fds.constraints.MaxPutSize = 2
+
 			css := make([]*CommonStruct, 10)
 			for i := range css {
 				// 0, 1, 0, 1 since PutMulti asserts per batch numbering from 0..N.
 				css[i] = &CommonStruct{Value: int64(i % 2)}
 			}
 
-			So(b.Put(c, css), ShouldBeNil)
+			So(Put(c, css), ShouldBeNil)
 			So(cf.put, ShouldEqual, 5)
-			So(cbCount, ShouldEqual, 4)
-		})
-
-		Convey(`Stops and returns callback errors.`, func() {
-			b.Size = 1
-			css := make([]*CommonStruct, 2)
-			for i := range css {
-				css[i] = &CommonStruct{Value: int64(i)}
-			}
-
-			cbErr = errors.New("test error")
-			So(b.Put(c, css), ShouldEqual, cbErr)
-			So(cf.put, ShouldEqual, 1)  // 1 put, then callback on next batch.
-			So(cbCount, ShouldEqual, 1) // 1 callback, which returned error.
 		})
 	})
 }
