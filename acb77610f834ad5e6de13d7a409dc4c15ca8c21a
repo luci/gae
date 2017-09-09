@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2923537_cf83da69",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-09T04:45:06Z",
+      "side": 1,
+      "message": "forward",
+      "range": {
+        "startLine": 106,
+        "startChar": 47,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706137cf_e09a2899",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-09T04:45:06Z",
+      "side": 1,
+      "message": "I wonder if this actually even makes sense? I get that it\u0027s here for completeness, but really if count is timing out then the implementor should probably consider something like hyperloglog instead.",
+      "range": {
+        "startLine": 146,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 13
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "382920ae_1746cc84",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-09T04:45:06Z",
+      "side": 1,
+      "message": "cute :)",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 13
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8744f59d_dfac901b",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-09T04:45:06Z",
+      "side": 1,
+      "message": "can you note the default batch size?",
+      "range": {
+        "startLine": 117,
+        "startChar": 14,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70eb39c7_d05055cc",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-09T04:45:06Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 121,
+        "startChar": 37,
+        "endLine": 121,
+        "endChar": 40
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3483f66_4fad2357",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-09T04:45:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is needed. There\u0027s not really an aggregation happening from the PoV of the caller, everything is called according to the API definition.",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 66
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc14956_115cc9c6",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-09T04:45:06Z",
+      "side": 1,
+      "message": "can you note each case with a comment like:\n\n  // func Something(arg type) type\n\n?",
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
