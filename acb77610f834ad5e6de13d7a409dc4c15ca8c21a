@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f97cfa46_33fa2277",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T20:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2923537_cf83da69",
+      "range": {
+        "startLine": 106,
+        "startChar": 47,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706137cf_e09a2899",
         "filename": "service/datastore/batcher.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-09T04:45:06Z",
       "side": 1,
       "message": "I wonder if this actually even makes sense? I get that it\u0027s here for completeness, but really if count is timing out then the implementor should probably consider something like hyperloglog instead.",
+      "range": {
+        "startLine": 146,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 13
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be4b304_6661bdce",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T20:58:26Z",
+      "side": 1,
+      "message": "heh I don\u0027t disagree. For \"Count\" though I could see this being useful. Maybe I\u0027ll remove \"GetAllBatch\"? That one is ... going to run out of memory.",
+      "parentUuid": "706137cf_e09a2899",
       "range": {
         "startLine": 146,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0d5211d7_abbbb533",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T20:58:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "382920ae_1746cc84",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 13
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8744f59d_dfac901b",
         "filename": "service/datastore/context.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0143bb23_5e28b686",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T20:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8744f59d_dfac901b",
+      "range": {
+        "startLine": 117,
+        "startChar": 14,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cfe1e0c0_4cb1511f",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T20:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70eb39c7_d05055cc",
+      "range": {
+        "startLine": 121,
+        "startChar": 37,
+        "endLine": 121,
+        "endChar": 40
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3483f66_4fad2357",
         "filename": "service/datastore/context.go",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "550c1597_136d4d1b",
+        "filename": "service/datastore/context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T20:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3483f66_4fad2357",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 66
+      },
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcc14956_115cc9c6",
         "filename": "service/datastore/interface.go",
         "patchSetId": 4
@@ -154,6 +298,24 @@
       "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "172c9307_ee5a65b0",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T20:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcc14956_115cc9c6",
+      "revId": "acb77610f834ad5e6de13d7a409dc4c15ca8c21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
