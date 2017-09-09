@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b85ed9de_5aef3517",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-09-09T00:06:24Z",
+      "side": 0,
+      "message": "As it turns out, the original did not check the return value here. I erroneously copied that check from \"AllocateIDs\".",
+      "range": {
+        "startLine": 622,
+        "startChar": 4,
+        "endLine": 622,
+        "endChar": 25
+      },
+      "revId": "3520859e7b826400688e27bf1c4eefc1c8c2dfd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
