@@ -61,6 +61,21 @@ func TestBrokenFeatures(t *testing.T) {
 					bf.BreakFeatures(nil, "GetMulti")
 					So(ds.Get(c, vals).Error(), ShouldContainSubstring, `feature "GetMulti" is broken`)
 				})
+
+				Convey("Callback work and receives correct context", func() {
+					errToReturn := errors.New("err from callback")
+
+					bf.BreakFeaturesWithCallback(func(c context.Context, feature string) error {
+						So(c.Value("some key"), ShouldEqual, "some value")
+						return errToReturn
+					}, "GetMulti")
+
+					ctx := context.WithValue(c, "some key", "some value")
+					So(ds.Get(ctx, vals), ShouldEqual, errToReturn)
+
+					errToReturn = nil
+					So(ds.Get(ctx, vals), ShouldEqual, ds.ErrNoSuchEntity)
+				})
 			})
 
 			Convey("with a default", func() {
