@@ -64,6 +64,18 @@ type FeatureBreaker interface {
 	//
 	// would make memcache.Add return memcache.ErrServerError. You can reverse
 	// this by calling UnbreakFeatures("Add").
+	//
+	// The only exception to this rule is two "fake" functions that can be used
+	// to simulate breaking transactions in a more detailed way:
+	//   * Use "BeginTransaction" as a feature name to simulate breaking of a new
+	//     transaction attempt. It is called before each individual retry.
+	//   * Use "CommitTransaction" as a feature name to simulate breaking the
+	//     transaction commit RPC. It is called after the transaction body
+	//     completes. Returning datastore.ErrConcurrentTransaction here will cause
+	//     a retry.
+	//
+	// In opposite, breaking "RunInTransaction" feature will cause the transaction
+	// callback to never be called at all.
 	BreakFeatures(err error, feature ...string)
 
 	// BreakFeaturesWithCallback is like BreakFeatures, except it allows you to
