@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "790de72c_636bc8f0",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T18:40:53Z",
+      "side": 1,
+      "message": "extracted from txnDataStoreData.putMulti, except I\u0027ve added key.IsIncomplete check to avoid grabbing the lock for no good reason. It does have small side effect though: GetOrCreateCollection is now NOT called if the key is complete. I think it\u0027s fine, it will be created anyway later during actual commit.",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 16
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661ee2df_83c64031",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T18:40:53Z",
+      "side": 1,
+      "message": "¯\\_(ツ)_/¯",
+      "range": {
+        "startLine": 316,
+        "startChar": 88,
+        "endLine": 316,
+        "endChar": 101
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430a2846_36610b8a",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T18:40:53Z",
+      "side": 1,
+      "message": "this lock here is the core of this CL. Previously canApplyTxn and applyTxn were called under txnMC.Lock() which is txn.lock.Lock(). The global data wasn\u0027t locked.",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 16
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f393b49_bab6c274",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T18:40:53Z",
+      "side": 1,
+      "message": "I was just very confused by serialize.ReadProperty(bytes.NewBufferString(rk), serialize.WithContext, ds.MkKeyContext(\"\", \"\"))\n\nNote that using root :\u003d muts[0].key.Root() returns slightly different key (it has app_id filled in). But looks like it doesn\u0027t matter. And also it is sort of more correct, since incrementLocked above takes a key with app_id too (and then later drops it somewhere, I think...).",
+      "range": {
+        "startLine": 458,
+        "startChar": 2,
+        "endLine": 458,
+        "endChar": 28
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf803609_f6833831",
+        "filename": "impl/memory/taskqueue.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T18:40:53Z",
+      "side": 1,
+      "message": "I was attempting to do this, thus some changes to prepTask. But then I abandoned this attempt, since it\u0027s a bit outside the scope already.\n\nOh, I\u0027ve also realized task queue task name autogenerator can actually produce collisions when running concurrent transactions, since it doesn\u0027t \"remember\" recently generated names until they are committed. But the probability of this is very low (it uses int64 random).",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 17
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7578cac_c61ad1af",
+        "filename": "impl/memory/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T18:40:53Z",
+      "side": 0,
+      "message": "forgot to mention: endTxn is now assumed to be called outside of locks (like all other methods of memContextObj, since there\u0027s no way to grab a lock from outside now). All implementations of endTxn we have are using atomic ints and thus safe already.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 23
+      },
+      "revId": "3af2b4a0930f31d2d5d55fc426e30005e578b229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a75c0759_1e79bfbc",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T18:40:53Z",
+      "side": 0,
+      "message": "this function was just weird...\n\npass a callback to unconditionally call it right away? Why?...\ndeclare an error return value and always return nil? Why?...",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 3
+      },
+      "revId": "3af2b4a0930f31d2d5d55fc426e30005e578b229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
