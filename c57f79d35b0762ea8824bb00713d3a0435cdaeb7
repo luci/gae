@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "1bd99413_cc0457ed",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T19:26:14Z",
+      "side": 1,
+      "message": "Discussed offline. muts here is a list of mutations for a single particular entity group (txn.muts is map \"serialized root\" -\u003e list of mutations for that root).",
+      "parentUuid": "e94c840d_560f02ba",
+      "range": {
+        "startLine": 458,
+        "startChar": 2,
+        "endLine": 458,
+        "endChar": 28
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf803609_f6833831",
         "filename": "impl/memory/taskqueue.go",
         "patchSetId": 1

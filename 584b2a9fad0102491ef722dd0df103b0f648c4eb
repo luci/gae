@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18aa159d_6153141a",
+        "filename": "impl/memory/taskqueue.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T19:26:14Z",
+      "side": 1,
+      "message": "Too late for that....",
+      "parentUuid": "95c88b0f_5589206d",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "584b2a9fad0102491ef722dd0df103b0f648c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1129e58d_d028138e",
         "filename": "impl/memory/taskqueue.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-18T19:07:00Z",
       "side": 1,
       "message": "it would be great to do this outside of the lock, unless it\u0027s here in order to deduplicate code or something?",
+      "range": {
+        "startLine": 179,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 8
+      },
+      "revId": "584b2a9fad0102491ef722dd0df103b0f648c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dcf5e92_ab9e7bf2",
+        "filename": "impl/memory/taskqueue.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T19:26:14Z",
+      "side": 1,
+      "message": "There\u0027s TODO to fix this. It is under the lock because q.genTaskName requires a lock, it is called in the guts of prepTask. Moving it outside is doable, but I decided to do it in another CL.",
+      "parentUuid": "1129e58d_d028138e",
       "range": {
         "startLine": 179,
         "startChar": 4,
@@ -68,6 +116,30 @@
       "revId": "584b2a9fad0102491ef722dd0df103b0f648c4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9e9bd3_6d372635",
+        "filename": "impl/memory/taskqueue_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-18T19:26:14Z",
+      "side": 1,
+      "message": "Yep, can be done in a separate CL.\n\n(It won\u0027t uncomplexify it too much though...)",
+      "parentUuid": "de813562_11405905",
+      "range": {
+        "startLine": 370,
+        "startChar": 8,
+        "endLine": 370,
+        "endChar": 18
+      },
+      "revId": "584b2a9fad0102491ef722dd0df103b0f648c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
