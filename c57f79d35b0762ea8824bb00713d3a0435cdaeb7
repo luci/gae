@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b24f61b3_0a07b245",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:07:00Z",
+      "side": 1,
+      "message": "lol... and so we begin the descent into madness..",
+      "parentUuid": "661ee2df_83c64031",
+      "range": {
+        "startLine": 316,
+        "startChar": 88,
+        "endLine": 316,
+        "endChar": 101
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "430a2846_36610b8a",
         "filename": "impl/memory/datastore_data.go",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2017-09-18T18:40:53Z",
       "side": 1,
       "message": "I was just very confused by serialize.ReadProperty(bytes.NewBufferString(rk), serialize.WithContext, ds.MkKeyContext(\"\", \"\"))\n\nNote that using root :\u003d muts[0].key.Root() returns slightly different key (it has app_id filled in). But looks like it doesn\u0027t matter. And also it is sort of more correct, since incrementLocked above takes a key with app_id too (and then later drops it somewhere, I think...).",
+      "range": {
+        "startLine": 458,
+        "startChar": 2,
+        "endLine": 458,
+        "endChar": 28
+      },
+      "revId": "c57f79d35b0762ea8824bb00713d3a0435cdaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94c840d_560f02ba",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:07:00Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s true; a multi-group transaction could have different mutations in different roots",
+      "parentUuid": "4f393b49_bab6c274",
       "range": {
         "startLine": 458,
         "startChar": 2,

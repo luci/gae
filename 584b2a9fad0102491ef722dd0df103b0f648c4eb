@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95c88b0f_5589206d",
+        "filename": "impl/memory/taskqueue.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:07:00Z",
+      "side": 1,
+      "message": "it would have been nice to do these locking changes in a separate CL; would have made the rest a lot less noisy (and would have been a good standalone change).",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "584b2a9fad0102491ef722dd0df103b0f648c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1129e58d_d028138e",
+        "filename": "impl/memory/taskqueue.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:07:00Z",
+      "side": 1,
+      "message": "it would be great to do this outside of the lock, unless it\u0027s here in order to deduplicate code or something?",
+      "range": {
+        "startLine": 179,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 8
+      },
+      "revId": "584b2a9fad0102491ef722dd0df103b0f648c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de813562_11405905",
+        "filename": "impl/memory/taskqueue_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:07:00Z",
+      "side": 1,
+      "message": "I\u0027m thinking it would be better to just have an atomic counter for these task names; yeah it means that uncommitted transactions will affect the global state (the counter will go up even if the transaction aborts), but I think it\u0027s actually more accurate anyway; you\u0027re supposed to be able to transactionally add a task and then put that task name into the datastore as a single transaction, which means the generated names happen at Add time; there\u0027s probably some global state that\u0027s affected (maybe like auto-generated datastore entity IDs?).\n\nThat would also have the nice side-effect of uncomplexifying this particular part of the code.",
+      "range": {
+        "startLine": 370,
+        "startChar": 8,
+        "endLine": 370,
+        "endChar": 18
+      },
+      "revId": "584b2a9fad0102491ef722dd0df103b0f648c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
