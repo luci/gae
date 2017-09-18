@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15e04c2f_ea148bb7",
+        "filename": "filter/featureBreaker/featurebreaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:30:31Z",
+      "side": 1,
+      "message": "could we remove this functionality? I don\u0027t think it actually is helpful to anyone. i.e. if you try to break RunInTransaction, have it return an error that says to break BeginTransaction and/or CommitTransaction instead",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "5beb71615e7320ee76e5289705c489ffbfc8bf89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
