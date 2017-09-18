@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfe02618_c748b574",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:35:15Z",
+      "side": 1,
+      "message": "should this error type be sticky within a context? i.e. if one RPC returns a deadline error, does it make sense for future RPCs using that context to return non-errors afterwards?",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17358fe5_59927aba",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:35:15Z",
+      "side": 1,
+      "message": "TODO: add a way to set this per entity Kind?",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289bc1a2_9020552c",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:35:15Z",
+      "side": 1,
+      "message": "I would add a NOTE in front to call this out",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 11
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf720b1f_675b3fb6",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-09-18T19:35:15Z",
+      "side": 1,
+      "message": "maybe have this be a pointer (or variadic) to allow FlakyErrors(nil) or FlakyErrors() to be some reasonable default? Otherwise callers will look like:\n\n  featureBreaker.FlakyErrors(featureBreaker.FlakyErrorsParams{})\n\nWhich is pretty epic.",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
