@@ -20,6 +20,20 @@ import (
 	ds "go.chromium.org/gae/service/datastore"
 )
 
+// DatastoreFeatures is a list of datastore features that can be "broken".
+var DatastoreFeatures = []string{
+	"AllocateIDs",
+	"DecodeCursor",
+	"Run",
+	"Count",
+	"RunInTransaction",
+	"BeginTransaction",
+	"CommitTransaction",
+	"DeleteMulti",
+	"GetMulti",
+	"PutMulti",
+}
+
 type dsState struct {
 	*state
 
