@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22ce755e_e0066ca7",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-19T02:41:57Z",
+      "side": 1,
+      "message": "I don\u0027t think RPC deadlines are \"stateful\". It appears RPC most often are getting stuck individually due to backend problems (i.e. when RPC hits an unhealthy backend server).\n\nWe can add fanciness later if necessary.",
+      "parentUuid": "bfe02618_c748b574",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17358fe5_59927aba",
         "filename": "filter/featureBreaker/flaky.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d4892a_891f6b59",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-19T02:41:57Z",
+      "side": 1,
+      "message": "This will be quite complicated... I don\u0027t think it\u0027ll be worth the effort.",
+      "parentUuid": "17358fe5_59927aba",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bccd382d_b058cb6e",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-19T02:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "289bc1a2_9020552c",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 11
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf720b1f_675b3fb6",
         "filename": "filter/featureBreaker/flaky.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee64267d_004d6e7f",
+        "filename": "filter/featureBreaker/flaky.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-09-19T02:41:57Z",
+      "side": 1,
+      "message": "Removed defaults instead to force users to pass parameters of their choosing. Defaults were confusing anyway.\n\nTo compensate, moved this code into its own package. This allows to trim identifiers a little bit (e.g flaky.Params vs featureBreaker.FlakeErrorsParams).",
+      "parentUuid": "cf720b1f_675b3fb6",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "cf07f848ab28ce260c513d66093dd60ab6f4cc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
