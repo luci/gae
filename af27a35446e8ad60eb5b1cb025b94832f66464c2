@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da639a0c_20857606",
+        "filename": "impl/memory/datastore_index_selection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2017-10-06T16:59:18Z",
+      "side": 1,
+      "message": "the actual fix",
+      "range": {
+        "startLine": 317,
+        "startChar": 21,
+        "endLine": 317,
+        "endChar": 26
+      },
+      "revId": "af27a35446e8ad60eb5b1cb025b94832f66464c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
