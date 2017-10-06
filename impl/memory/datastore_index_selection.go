@@ -68,15 +68,24 @@ type reducedQuery struct {
 	// and it will be appended to the prefix during iteration.
 	start []byte
 	end   []byte
+}
 
-	// metadata describing the total number of columns that this query requires to
-	// execute perfectly.
-	numCols int
+// numCols returns the total number of columns that q requires to execute
+// perfectly.
+func (q *reducedQuery) numCols() int {
+	ret := len(q.suffixFormat)
+	for prop, vals := range q.eqFilters {
+		if len(q.suffixFormat) == 1 && prop == "__ancestor__" {
+			continue
+		}
+		ret += vals.Len()
+	}
+	return ret
 }
 
 type indexDefinitionSortable struct {
 	// eqFilts is the list of ACTUAL prefix columns. Note that it may contain
-	// redundant columns! (e.g. (tag, tag) is a perfectly valid prefix, becuase
+	// redundant columns! (e.g. (tag, tag) is a perfectly valid prefix, because
 	// (tag=1, tag=2) is a perfectly valid query).
 	eqFilts []ds.IndexColumn
 	coll    memCollection
@@ -219,7 +228,7 @@ func (idxs *indexDefinitionSortableSlice) maybeAddDefinition(q *reducedQuery, s 
 	}
 
 	perfect := false
-	if len(sortBy) == q.numCols {
+	if len(sortBy) == q.numCols() {
 		perfect = true
 		for k, num := range numByProp {
 			if num < q.eqFilters[k].Len() {
