@@ -135,7 +135,6 @@ var queryTests = []queryTest{
 			},
 			increment(serialize.ToBytes(dstore.MkProperty(3))),
 			serialize.ToBytes(dstore.MkProperty(10)),
-			2,
 		}},
 
 	{"cursors could cause the whole query to be useless",
