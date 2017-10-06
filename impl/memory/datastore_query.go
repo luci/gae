@@ -253,15 +253,6 @@ func reduce(fq *ds.FinalizedQuery, kc ds.KeyContext, isTxn bool) (*reducedQuery,
 	if ret.end != nil && bytes.Compare(ret.start, ret.end) >= 0 {
 		return nil, ds.ErrNullQuery
 	}
-
-	ret.numCols = len(ret.suffixFormat)
-	for prop, vals := range ret.eqFilters {
-		if len(ret.suffixFormat) == 1 && prop == "__ancestor__" {
-			continue
-		}
-		ret.numCols += vals.Len()
-	}
-
 	return ret, nil
 }
 
