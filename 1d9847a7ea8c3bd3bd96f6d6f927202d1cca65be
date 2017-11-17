@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4810fb26_277b6d2c",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-11-17T23:48:41Z",
+      "side": 1,
+      "message": "Removed creds.ProjectID. It\u0027s good to require people to pass GCLOUD_PROJECT environ. Reduces the chance of shooting themselves in a foot.",
+      "parentUuid": "4164b5ef_7c58cf83",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d943fb00_73802cbb",
         "filename": "impl/cloud/flex.go",
         "patchSetId": 1
@@ -87,6 +111,24 @@
       "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38a5161_b93943d4",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-11-17T23:48:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d943fb00_73802cbb",
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "547ad6ca_5559919c",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-11-17T23:48:41Z",
+      "side": 1,
+      "message": "\u0027default\u0027 is reserved keyword\n\nregardless, the implementation is different now",
+      "parentUuid": "4e687535_fdf090db",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04017ba5_466f7da8",
         "filename": "impl/cloud/flex.go",
         "patchSetId": 1
@@ -133,6 +199,30 @@
       "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224986c7_f79d34a8",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-11-17T23:48:41Z",
+      "side": 1,
+      "message": "Added \"required\" word.",
+      "parentUuid": "04017ba5_466f7da8",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 72
+      },
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
