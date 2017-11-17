@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "70568937_ebdf926b",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2017-11-17T23:37:36Z",
+      "side": 1,
+      "message": "nvm here, i misread getEnv() implementation.",
+      "parentUuid": "4164b5ef_7c58cf83",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d943fb00_73802cbb",
         "filename": "impl/cloud/flex.go",
         "patchSetId": 1
@@ -60,6 +84,29 @@
       "writtenOn": "2017-11-17T23:32:37Z",
       "side": 1,
       "message": "func getEnv(key stirng, dest *string, err *error) {\n  if *err !\u003d nil { ...}\n}\n\nvar err error\ngetEnv(\"GCLOUD_PROJECT\", \u0026cfg.ProjectID, \u0026err)\ngetEnv(\"GET_INSTANCE\", \u0026cfg.InstanceID, \u0026err)\nif err !\u003d nil {\n  return err\n}\n\nor\n\nm :\u003d map[string]*string {\n  \"GCLOUD_PROJECT\": \u0026cfg.ProjectID,\n  \"GET_INSTANCE\", \u0026cfg.InstanceID,\n}\nif err :\u003d getEnv(m); err !\u003d nil {\n   return err\n}",
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04017ba5_466f7da8",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2017-11-17T23:37:36Z",
+      "side": 1,
+      "message": "ah, i misread this the first time. Can you change error to be \n(\"missing environment variable %q default value\", key)...",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 72
+      },
       "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
