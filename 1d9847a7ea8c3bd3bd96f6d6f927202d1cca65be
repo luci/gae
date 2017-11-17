@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "335edc4d_624cfe32",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2017-11-17T23:29:27Z",
+      "side": 1,
+      "message": "is this useful in case of local dev?  YOu\u0027ve just assigned cfg.ProjectID on line 74 and now you require this value to be overwritten from ENV in order to continue (else err is returned).",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
