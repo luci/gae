@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4164b5ef_7c58cf83",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-11-17T23:32:41Z",
+      "side": 1,
+      "message": "creds.ProjectID is often \"\". If so, one can set GCLOUD_PROJECT environ to provide it. If you prefer, I can remove creds.ProjectID completely.",
+      "parentUuid": "335edc4d_624cfe32",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "1d9847a7ea8c3bd3bd96f6d6f927202d1cca65be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d943fb00_73802cbb",
         "filename": "impl/cloud/flex.go",
         "patchSetId": 1
