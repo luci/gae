@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36d34b86_caecd636",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-11-17T22:03:17Z",
+      "side": 0,
+      "message": "this is just wrong.... panics should not be used as control flow mechanism",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 4
+      },
+      "revId": "3189938fb96ef6dd05f00faddb3959afc1fc9602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
