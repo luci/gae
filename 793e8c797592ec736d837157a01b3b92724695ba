@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a7536ff_0468b8ba",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-11-18T17:32:19Z",
+      "side": 1,
+      "message": "what\u0027s the return value from this used for anyway? I\u0027m wondering if we should just ditch the `if !SetMeta; return false` logic.",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 19
+      },
+      "revId": "793e8c797592ec736d837157a01b3b92724695ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
