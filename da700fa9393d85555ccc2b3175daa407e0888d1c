@@ -16,6 +16,24 @@
       "revId": "da700fa9393d85555ccc2b3175daa407e0888d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d8938c_8def835f",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2017-11-18T09:29:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a346c364_aeb7337f",
+      "revId": "da700fa9393d85555ccc2b3175daa407e0888d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
