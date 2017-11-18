@@ -22,6 +22,30 @@
       "revId": "793e8c797592ec736d837157a01b3b92724695ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6377eda7_5c350cb3",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2017-11-18T18:00:34Z",
+      "side": 1,
+      "message": "i don\u0027t know. There is no comment to explain what the return value means so this signature is very unclear. I think it needs a refactor, but it is outside of the CL scope.",
+      "parentUuid": "7a7536ff_0468b8ba",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 19
+      },
+      "revId": "793e8c797592ec736d837157a01b3b92724695ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
