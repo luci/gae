@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a346c364_aeb7337f",
+        "filename": "service/datastore/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-11-18T06:31:57Z",
+      "side": 1,
+      "message": "this should take precedence over kind+parent+id; move the block above below this one.",
+      "revId": "da700fa9393d85555ccc2b3175daa407e0888d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
