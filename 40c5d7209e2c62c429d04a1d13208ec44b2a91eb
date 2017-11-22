@@ -22,6 +22,30 @@
       "revId": "40c5d7209e2c62c429d04a1d13208ec44b2a91eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b95f3f_e762655c",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2017-11-22T00:57:09Z",
+      "side": 1,
+      "message": "I believe it sends SIGTERM. But yeah, our LUCI libraries don\u0027t have necessary integration points to easily add this.",
+      "parentUuid": "d7fc6051_64c3d60e",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "40c5d7209e2c62c429d04a1d13208ec44b2a91eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
