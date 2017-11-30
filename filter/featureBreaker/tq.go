@@ -32,6 +32,9 @@ type tqState struct {
 var _ tq.RawInterface = (*tqState)(nil)
 
 func (t *tqState) AddMulti(tasks []*tq.Task, queueName string, cb tq.RawTaskCB) error {
+	if len(tasks) == 0 {
+		return nil
+	}
 	return t.run(t.c, func() (err error) { return t.tq.AddMulti(tasks, queueName, cb) })
 }
 
