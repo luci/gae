@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c517a815_62593ab5",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "do we really want this to be an option? why not just always do this?",
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1acd79d_a6145d5f",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "what\u0027s this?",
+      "range": {
+        "startLine": 120,
+        "startChar": 42,
+        "endLine": 120,
+        "endChar": 64
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7381da66_cd8bcdf6",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "maybe \"non-request related\"?",
+      "range": {
+        "startLine": 63,
+        "startChar": 55,
+        "endLine": 63,
+        "endChar": 63
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4892ea_a306cc1c",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "LERGE!",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8cf54bc_5b425d87",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "Google Cloud?",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 25
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2289b59d_2fd9158a",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "maybe just make the string below a constant and drop this function?",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cafd680_4a095acc",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "elaborate? e.g. \"Will summarize the severity of all logs within a single request so that the google cloud console can show per-request severity information\"?",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bc9514_9a3bb8fa",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "but would you ever NOT want it?",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e653411a_8dc80f98",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "typol",
+      "range": {
+        "startLine": 44,
+        "startChar": 74,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055dedaa_675a94db",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2017-12-04T20:39:01Z",
+      "side": 1,
+      "message": "omg, will we be able to see incoming headers?!",
+      "range": {
+        "startLine": 129,
+        "startChar": 20,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
