@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8745078f_91a6d8fb",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Thoughts were:\n- Use is used both by full-cloud applications (e.g., LogDog Logs) and by Cloud-aware applications (e.g., Collector). I didn\u0027t want to prescribe an overarching behavior here for all users.\n- This effectively produces twice as many logs, which costs twice as much for logging.\n- Users may not want to pollute STDERR with request logs if they use STDERR for something deliberate.\n\nTL;DR, all hypothetical, but it\u0027s still automatic (b/c it\u0027s enabled by Flex environment config), so I think it\u0027s not a bad thing to leave optional.",
+      "parentUuid": "c517a815_62593ab5",
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1acd79d_a6145d5f",
         "filename": "impl/cloud/context.go",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2017-12-04T20:39:01Z",
       "side": 1,
       "message": "what\u0027s this?",
+      "range": {
+        "startLine": 120,
+        "startChar": 42,
+        "endLine": 120,
+        "endChar": 64
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a08ff6f_6764111c",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Added some comments clarifying this. Also renamed from \"trace\" to \"debug\" logs, which is consistent with other nomenclature.",
+      "parentUuid": "c1acd79d_a6145d5f",
       "range": {
         "startLine": 120,
         "startChar": 42,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9ec7aa53_5180048e",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Updated comment.",
+      "parentUuid": "7381da66_cd8bcdf6",
+      "range": {
+        "startLine": 63,
+        "startChar": 55,
+        "endLine": 63,
+        "endChar": 63
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf4892ea_a306cc1c",
         "filename": "impl/cloud/flex.go",
         "patchSetId": 3
@@ -76,6 +142,30 @@
       "writtenOn": "2017-12-04T20:39:01Z",
       "side": 1,
       "message": "LERGE!",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5d36ba_ade70b3c",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Oh yeah I misspelled that one bigly!",
+      "parentUuid": "bf4892ea_a306cc1c",
       "range": {
         "startLine": 67,
         "startChar": 26,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "346803d1_19e2c652",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Yeah I still don\u0027t know for sure what\u0027s right, but I think this is more correct than \"Google Cloud\".",
+      "parentUuid": "d8cf54bc_5b425d87",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 25
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2289b59d_2fd9158a",
         "filename": "impl/cloud/logger.go",
         "patchSetId": 3
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "268a40f1_118fed6f",
+        "filename": "impl/cloud/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2289b59d_2fd9158a",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cafd680_4a095acc",
         "filename": "impl/cloud/request.go",
         "patchSetId": 3
@@ -145,6 +283,30 @@
       "writtenOn": "2017-12-04T20:39:01Z",
       "side": 1,
       "message": "elaborate? e.g. \"Will summarize the severity of all logs within a single request so that the google cloud console can show per-request severity information\"?",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccaf32ef_95b73b8f",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "I\u0027ve added a large block of details about how and why this is useful.",
+      "parentUuid": "9cafd680_4a095acc",
       "range": {
         "startLine": 37,
         "startChar": 3,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "c62c08fd_ddaf4665",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Yeah, you could be not using Stackdriver Logging, or could be using your own accounting method or log emission method.\n\nIn our case, Flex AppEngine apps will always use it, but other apps (e.g., LogDog Collector) which use \"impl/cloud.Use\" but don\u0027t run in an AppEngine framework will not. That said, it might not be a bad idea to update LogDog\u0027s microservices to use this where request is a single Pub/Sub message handled. It would certainly make the logs a little more useful. However, it is not *required* to do so.",
+      "parentUuid": "a1bc9514_9a3bb8fa",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e653411a_8dc80f98",
         "filename": "impl/cloud/request.go",
         "patchSetId": 3
@@ -191,6 +377,30 @@
       "writtenOn": "2017-12-04T20:39:01Z",
       "side": 1,
       "message": "typol",
+      "range": {
+        "startLine": 44,
+        "startChar": 74,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0e3569_2cc16c10",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "I need to AND two 64-bit numbers, what are you saying!?",
+      "parentUuid": "e653411a_8dc80f98",
       "range": {
         "startLine": 44,
         "startChar": 74,
@@ -223,6 +433,30 @@
       "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664fc9c5_f68e6283",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T21:10:56Z",
+      "side": 1,
+      "message": "Yes :)\n\nOverview: https://screenshot.googleplex.com/tWkPtMCUUMc.png\nPanic: https://screenshot.googleplex.com/0pJnBxmah4w.png\nEscalation: https://screenshot.googleplex.com/UxinXQ7z4hR.png\nMetadatas: https://screenshot.googleplex.com/0ozRTCzCh80.png",
+      "parentUuid": "055dedaa_675a94db",
+      "range": {
+        "startLine": 129,
+        "startChar": 20,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "c797d4f8a8677b62accdf8c21ed118d1212dcb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
