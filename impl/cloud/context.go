@@ -15,6 +15,9 @@
 package cloud
 
 import (
+	"net/http"
+	"time"
+
 	"go.chromium.org/gae/impl/dummy"
 	ds "go.chromium.org/gae/service/datastore"
 	"go.chromium.org/gae/service/mail"
@@ -23,12 +26,16 @@ import (
 	"go.chromium.org/gae/service/taskqueue"
 	"go.chromium.org/gae/service/user"
 
+	"go.chromium.org/luci/common/clock"
+
 	"cloud.google.com/go/datastore"
 	cloudLogging "cloud.google.com/go/logging"
 	"github.com/bradfitz/gomemcache/memcache"
 
 	"golang.org/x/net/context"
 )
+
+var requestStateContextKey = "gae/flex request state"
 
 // Config is a full-stack cloud service configuration. A user can selectively
 // populate its fields, and services for the populated fields will be installed
@@ -83,6 +90,19 @@ type Config struct {
 	// If nil, the service will treat requests for services as not implemented.
 	ServiceProvider ServiceProvider
 
+	// LogToSTDERR, if true, indicates that log messages should be tee'd to
+	// a simple STDERR logger prior to being written.
+	//
+	// This is be useful because Flex environment has a separate processing
+	// pipeline for logs written to STDOUT/STDERR, so this ensures that even if
+	// something goes wrong with the Cloud Logging client, the log may still be
+	// visible.
+	LogToSTDERR bool
+
+	// HandlePanics, if true, instructs WithScopedRequest to log panics that occur
+	// during its handler.
+	HandlePanics bool
+
 	// DS is the cloud datastore client. If populated, the datastore service will
 	// be installed.
 	DS *datastore.Client
@@ -91,9 +111,13 @@ type Config struct {
 	// be installed.
 	MC *memcache.Client
 
-	// L is the Cloud Logging logger to use for requests. If populated, the
-	// logging service will be installed.
-	L *cloudLogging.Logger
+	// TraceLogger, if not nil, will cause a Stackdriver Logging client to be
+	// installed into the Context by Use for trace logging messages.
+	TraceLogger *cloudLogging.Logger
+
+	// RequestLogger, if not nil, will be used by WithScopedRequest to log
+	// request-level logs.
+	RequestLogger *cloudLogging.Logger
 }
 
 // Request is the set of request-specific parameters.
@@ -104,6 +128,43 @@ type Request struct {
 	// If empty, the service will treat requests for this field as not
 	// implemented.
 	TraceID string
+
+	// HTTPRequest, if not nil, is the HTTP request that is being handled.
+	HTTPRequest *http.Request
+
+	// StartTime is the time when this request started. If empty, the current
+	// clock time at the point when Use is called will be recorded.
+	StartTime time.Time
+
+	// LocalAddr is the local address handling this request. It may be empty
+	// if the local address is unknown.
+	LocalAddr string
+
+	// SeverityTracker tracks the severity of the overall request. Callers may use
+	// this manually. If not nil, it will be supplied to the request's Logger.
+	//
+	// If nil, the highest logging severity will still be tracked.
+	SeverityTracker *LogSeverityTracker
+}
+
+// requestState is installed into the Context by Use to track the state of the
+// current Request.
+type requestState struct {
+	Request
+
+	cfg               *Config
+	insertIDGenerator *InsertIDGenerator
+}
+
+// currentRequestState returns the requestState in c. If no requestState is
+// installed, currentRequestState will return nil.
+func currentRequestState(c context.Context) *requestState {
+	rs, _ := c.Value(&requestStateContextKey).(*requestState)
+	return rs
+}
+
+func (rs *requestState) with(c context.Context) context.Context {
+	return context.WithValue(c, &requestStateContextKey, rs)
 }
 
 // Use installs the Config into the supplied Context. Services will be installed
@@ -118,6 +179,22 @@ func (cfg *Config) Use(c context.Context, req *Request) context.Context {
 	if req == nil {
 		req = &Request{}
 	}
+
+	// Fill our missing Request fields and install it into c.
+	rs := requestState{
+		Request: *req,
+		cfg:     cfg,
+	}
+	if rs.StartTime.IsZero() {
+		rs.StartTime = clock.Now(c)
+	}
+	if rs.SeverityTracker == nil {
+		rs.SeverityTracker = &LogSeverityTracker{}
+	}
+	if rs.TraceID != "" {
+		rs.insertIDGenerator = &InsertIDGenerator{Base: rs.TraceID}
+	}
+	c = rs.with(c)
 
 	// Dummy services that we don't support.
 	c = mail.Set(c, dummy.Mail())
@@ -134,14 +211,18 @@ func (cfg *Config) Use(c context.Context, req *Request) context.Context {
 	// are already properly set to indicate "gae_app" resource. See:
 	//
 	//	https://github.com/GoogleCloudPlatform/google-cloud-go/issues/720
-	if cfg.L != nil {
-		var labels map[string]string
-		if req.TraceID != "" {
-			labels = map[string]string{
-				"appengine.googleapis.com/trace_id": req.TraceID,
-			}
+	if cfg.TraceLogger != nil {
+		lcfg := LoggerConfig{
+			SeverityTracker:   rs.SeverityTracker,
+			InsertIDGenerator: rs.insertIDGenerator,
+			Trace:             rs.TraceID,
+			LogToSTDERR:       cfg.LogToSTDERR,
+			Labels:            map[string]string{},
 		}
-		c = WithLogger(c, cfg.L, labels)
+		if req.TraceID != "" {
+			addTraceIDLabel(lcfg.Labels, req.TraceID)
+		}
+		c = WithLogger(c, cfg.TraceLogger, &lcfg)
 	}
 
 	// Setup and install the "info" service.
@@ -172,4 +253,23 @@ func (cfg *Config) Use(c context.Context, req *Request) context.Context {
 	}
 
 	return c
+}
+
+// WithScopedRequest is a convenience function that installs a Flex environment
+// and executes the supplied HandlerFunc with a complete Flex Context.
+func (cfg *Config) WithScopedRequest(c context.Context, req *Request, rw http.ResponseWriter,
+	fn HandlerFunc) {
+
+	c = cfg.Use(c, req)
+	WithScopedRequest(c, rw, fn)
+}
+
+// HTTPRequest returns the http.Request object associated with the current
+// Flex request Context.
+//
+// c must be a Context supplied by Use. If the source Request passed to Use did
+// not have an HTTP request associated with it, HTTPRequest will return
+// nil.
+func HTTPRequest(c context.Context) *http.Request {
+	return currentRequestState(c).HTTPRequest
 }

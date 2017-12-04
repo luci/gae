@@ -15,6 +15,7 @@
 package cloud
 
 import (
+	"net"
 	"net/http"
 	"os"
 	"strings"
@@ -36,6 +37,15 @@ import (
 	"golang.org/x/oauth2/google"
 )
 
+const (
+	// DefaultFlexRequestLogName is the default value for Flex's RequestLogName
+	// field.
+	DefaultFlexRequestLogName = "gae.request"
+
+	// DefaultFlexTraceLogName is the default value for Flex's TraceLogName field.
+	DefaultFlexTraceLogName = "gae.request_trace"
+)
+
 // Flex defines a Google AppEngine Flex Environment platform.
 type Flex struct {
 	// Cache is the process-global LRU cache instance that Flexi services can use
@@ -43,6 +53,17 @@ type Flex struct {
 	//
 	// If Cache is nil, a default cache will be used.
 	Cache *lru.Cache
+
+	// RequestLogName is the name of the per-request log entry that is generated
+	// on request completion. If empty, no per-request log entry will be emitted.
+	RequestLogName string
+
+	// TraceLogName is the log name that will be used for standard logger entries.
+	// If empty, TraceLogName will default to DefaultTraceLogName.
+	//
+	// The trace log name is lergely cosmetic, and will not affect the actual
+	// logging output.
+	TraceLogName string
 }
 
 // Configure constructs a Config based on the current Flex environment.
@@ -57,7 +78,10 @@ func (f *Flex) Configure(c context.Context, opts ...option.ClientOption) (cfg *C
 	// environ to get environment information. When running locally (e.g. during
 	// development), we extract the email from the Default Application Credentials
 	// and provide some fake defaults for non-essential parts of the config.
-	cfg = &Config{}
+	cfg = &Config{
+		HandlePanics: true,
+		LogToSTDERR:  true,
+	}
 	if metadata.OnGCE() {
 		if cfg.ServiceAccountName, err = getMetadata("instance/service-accounts/default/email"); err != nil {
 			return nil, err
@@ -119,14 +143,26 @@ func (f *Flex) Configure(c context.Context, opts ...option.ClientOption) (cfg *C
 		if err != nil {
 			return nil, errors.Annotate(err, "could not create logger client").Err()
 		}
-		cfg.L = client.Logger("request", cloudLogging.CommonResource(&mrpb.MonitoredResource{
+
+		valueOrDefault := func(v string, def string) string {
+			if v != "" {
+				return v
+			}
+			return def
+		}
+		requestLogName := valueOrDefault(f.RequestLogName, DefaultFlexRequestLogName)
+		traceLogName := valueOrDefault(f.TraceLogName, DefaultFlexTraceLogName)
+
+		resource := mrpb.MonitoredResource{
 			Labels: map[string]string{
 				"module_id":  cfg.ServiceName,
 				"project_id": cfg.ProjectID,
 				"version_id": cfg.VersionName,
 			},
 			Type: "gae_app",
-		}))
+		}
+		cfg.RequestLogger = client.Logger(requestLogName, cloudLogging.CommonResource(&resource))
+		cfg.TraceLogger = client.Logger(traceLogName, cloudLogging.CommonResource(&resource))
 	}
 
 	return
@@ -134,10 +170,20 @@ func (f *Flex) Configure(c context.Context, opts ...option.ClientOption) (cfg *C
 
 // Request probes Request parameters from a AppEngine Flex Environment HTTP
 // request.
-func (*Flex) Request(req *http.Request) *Request {
-	return &Request{
-		TraceID: getCloudTraceContext(req),
+func (*Flex) Request(c context.Context, req *http.Request) *Request {
+	r := Request{
+		TraceID:     getCloudTraceContext(req),
+		HTTPRequest: req,
 	}
+
+	// See if a local address is embedded in the Context. This will be the case
+	// when a Context is associated with the HTTP server.
+	localAddr, ok := c.Value(http.LocalAddrContextKey).(net.Addr)
+	if ok {
+		r.LocalAddr = localAddr.String()
+	}
+
+	return &r
 }
 
 func getEnv(kv map[string]*string) error {
