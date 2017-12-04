@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "989deb84_defca5b6",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "s/visible/available",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 11
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c718893_bd5bad5b",
+        "filename": "impl/cloud/context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "and consume them.",
+      "range": {
+        "startLine": 102,
+        "startChar": 58,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38dc9328_ddbca65f",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "If empty, will default to DefaultFlexRequestLogName.",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 77
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e065dda_b60e5b79",
+        "filename": "impl/cloud/flex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "as request logs will be more useful in practice and will include trace logs.",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b3881d_08cc6441",
+        "filename": "impl/cloud/log_severity_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "(Not used)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccc71f6e_ef0b22c9",
+        "filename": "impl/cloud/log_severity_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "nit: merge into logger.go?",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b159d311_18c49949",
+        "filename": "impl/cloud/log_severity_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "(Not used)",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c19bc4_64a376df",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "If configured",
+      "range": {
+        "startLine": 40,
+        "startChar": 63,
+        "endLine": 40,
+        "endChar": 79
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9484cc4d_cfb193aa",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "(No longer true) Maybe move panic handling into the function signature, have it return an error if panic?",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36989806_d21b61de",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "environment",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ca8d6e_481ca453",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "if the ResponseWriter already sent",
+      "range": {
+        "startLine": 85,
+        "startChar": 49,
+        "endLine": 85,
+        "endChar": 57
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08ac2030_8b65a220",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "Allocate w/ capacity of 2.",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e698a97a_40c27cb8",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "Already used this comment.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 69
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "735f3c37_fe3c326b",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "capturingResponseWriter wraps an http.ResponseWriter, capturing metadata related to the response.",
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ff2b3d_6c73ea07",
+        "filename": "impl/cloud/request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1109829
+      },
+      "writtenOn": "2017-12-04T13:32:04Z",
+      "side": 1,
+      "message": "crw.HasStatus \u003d true",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 16
+      },
+      "revId": "624d984d200998d57f6ef29ae8e0c7251b1f5504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
