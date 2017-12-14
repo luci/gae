@@ -54,6 +54,14 @@ func mkProperties(index bool, forceMulti bool, vals ...interface{}) ds.PropertyD
 func mkp(vals ...interface{}) ds.PropertyData   { return mkProperties(true, false, vals...) }
 func mkpNI(vals ...interface{}) ds.PropertyData { return mkProperties(false, false, vals...) }
 
+func shouldBeNilAndOnlyNil(actual interface{}, _ ...interface{}) string {
+	if actual == nil {
+		return ""
+	}
+	return fmt.Sprintf(`Expected: (%T, %v)
+Actual:   (%T, %v)`, nil, nil, actual, actual)
+}
+
 // TestDatastore tests the cloud datastore implementation.
 //
 // This test uses the gcloud datastore emulator. Like the Go datastore package,
@@ -92,7 +100,7 @@ func TestDatastore(t *testing.T) {
 		testTime := ds.RoundTime(time.Date(2016, 1, 1, 0, 0, 0, 0, time.UTC))
 		_ = testTime
 
-		cfg := Config{DS: client}
+		cfg := Config{ProjectID: "luci-gae-test", DS: client}
 		c = cfg.Use(c, nil)
 
 		Convey(`Supports namespaces`, func() {
@@ -311,7 +319,7 @@ func TestDatastore(t *testing.T) {
 					So(err, ShouldEqual, testError)
 
 					// Confirm that noTxnPM was added.
-					So(ds.CurrentTransaction(c), ShouldBeNil)
+					So(ds.CurrentTransaction(c), shouldBeNilAndOnlyNil)
 					So(ds.Get(c, noTxnPM), ShouldBeNil)
 
 					pmap := ds.PropertyMap{"$kind": mkp("Test"), "$id": mkp("quux")}
