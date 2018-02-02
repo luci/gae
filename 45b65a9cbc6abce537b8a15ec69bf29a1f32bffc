@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6dd9668_3c015384",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2018-02-02T17:33:47Z",
+      "side": 1,
+      "message": ":) maybe copy from luci-go where I\u0027ve updated the instruction?",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "45b65a9cbc6abce537b8a15ec69bf29a1f32bffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
