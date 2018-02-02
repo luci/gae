@@ -36,7 +36,7 @@ Run the following to setup the code review tool and create your first review:
 
     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git $HOME/src/depot_tools
     export PATH="$PATH:$HOME/src/depot_tools"
-    cd $GOROOT/github.com/luci/gae
+    cd $GOROOT/go.chromium.org/gae
     git new-branch work
     # or `git checkout -b work origin/master` if you like typing more.
 
@@ -44,7 +44,7 @@ Run the following to setup the code review tool and create your first review:
 
     git commit -a -m "This is awesome\nR=joe@example.com"
     # This will ask for your Google Account credentials.
-    git cl upload -s
+    git cl upload -s --r-owners
     # Wait for LGTM over email.
     # Check Commit Queue checkbox in Rietveld codereview site.
     # See it tested and landed automatically.
