@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea5a64f2_59569e16",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2018-02-02T17:12:19Z",
+      "side": 1,
+      "message": "arg this is definitely on my \"confusing Go non-features\" list...",
+      "revId": "d3fb6bd9c179542c380d65f2d06d4a9ef59ccdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44d25b52_bb9a946e",
+        "filename": "impl/cloud/datastore_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2018-02-02T17:12:19Z",
+      "side": 1,
+      "message": "maybe \"shouldBeNilInterface\"?\n\nI\u0027d add a little docstring too to point out that this is intended to distinguish e.g. https://play.golang.org/p/6G2zfM5KAuX",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "d3fb6bd9c179542c380d65f2d06d4a9ef59ccdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
