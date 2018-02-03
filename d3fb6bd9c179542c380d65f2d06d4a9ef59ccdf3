@@ -63,6 +63,30 @@
       "revId": "d3fb6bd9c179542c380d65f2d06d4a9ef59ccdf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030b10ee_3caec065",
+        "filename": "impl/cloud/datastore_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2018-02-03T20:16:23Z",
+      "side": 1,
+      "message": "Maybe \"shouldBeUntypedNil\"? I suggested \"shouldBeNilInterface\" because you really do want a \"nil interface\" (i.e. an interface struct whose value and type are both 0).\n\nI think the reason this was done in ShouldBeNil was to support nil maps and such. Part of the trouble (with Go, really), is that any sort of generic code needs to use interface{}, which means the So() assertion function must take interface{} for its data values. Additionally, interfaces don\u0027t \"stack\". You can\u0027t have an interface{} which contains an interface; when you assign one interface to another, if it\u0027s compatible, it gets \u0027squashed\u0027 into the more liberal interface.\n\n  I1 :\u003d interface{SomeMethod()}{\u0026object}\n  // I1 is [objectT, *object]\n\n  I2 :\u003d interface{}(I1)\n  // Crap... I2 is ALSO [objectT, *object]. The fact that it was in a more\n  // restrictive interface previously is lost.\n\nIf ShouldBeNil was strictly checking for an untyped nil, then this would fail:\n\n  m :\u003d funcReturningMap(\"input\")\n  So(m, ShouldNotBeNil) // the function returned some stuff!\n\n  m \u003d funcReturningMap(\"\")\n  So(m, ShouldBeNil) // want to ensure no allocation happened with empty input\n  // fails because So sees `interface{}(map[T1]T2(nil))`\n\nWhich would ALSO be confusing :D. Basically... I think this is just confusing, given the way that Go\u0027s type system currently works.",
+      "parentUuid": "55c58c66_ed320ca5",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "d3fb6bd9c179542c380d65f2d06d4a9ef59ccdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
