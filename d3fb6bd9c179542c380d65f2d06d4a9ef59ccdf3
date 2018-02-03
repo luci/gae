@@ -39,6 +39,30 @@
       "revId": "d3fb6bd9c179542c380d65f2d06d4a9ef59ccdf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55c58c66_ed320ca5",
+        "filename": "impl/cloud/datastore_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1256215
+      },
+      "writtenOn": "2018-02-03T19:52:32Z",
+      "side": 1,
+      "message": "Do you mean \"shouldBeNilNotNilInterface\"?  \n\nYes, I\u0027ll describe the issue in a docstring.  I played with your example a bit to see if I could make it really obvious what was going on: https://play.golang.org/p/kuL5neNTo4H (I had to think about why you were casting to *int for a second).  \n\nAnd side note, I think I\u0027d call this a bug in convey\u0027s \"ShouldBeNil\".  It actually does extra work to let the nil interface pass this check.",
+      "parentUuid": "44d25b52_bb9a946e",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "d3fb6bd9c179542c380d65f2d06d4a9ef59ccdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
