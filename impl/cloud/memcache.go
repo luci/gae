@@ -304,3 +304,5 @@ func (*boundMemcacheClient) translateErr(err error) error {
 		return err
 	}
 }
+
+func (bmc *boundMemcacheClient) GetTestable() mc.Testable { return nil }

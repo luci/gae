@@ -15,6 +15,7 @@
 package memory
 
 import (
+	"strings"
 	"testing"
 	"time"
 
@@ -246,6 +247,37 @@ func TestMemcache(t *testing.T) {
 				So(err, ShouldBeNil)
 				So(got.Value(), ShouldResemble, []byte("heya"))
 			})
+		})
+
+		Convey("Invalid keys are detected", func() {
+			mc.GetTestable(c).StrictKeyChecks(true)
+			defer mc.GetTestable(c).StrictKeyChecks(false)
+
+			tests := map[string]string{
+				"unprintable": "unprintable\x01",
+				"space":       "no space",
+				"del":         "no\x7fdel",
+				"long":        strings.Repeat("a", 251),
+			}
+			for name, test := range tests {
+				Convey(name, func() {
+					testItem := &mcItem{
+						key:   test,
+						value: []byte("val"),
+					}
+					So(mc.Set(c, testItem), ShouldBeError)
+					So(mc.Get(c, testItem), ShouldBeError)
+					So(mc.Add(c, testItem), ShouldBeError)
+					So(mc.CompareAndSwap(c, testItem), ShouldBeError)
+					_, err := mc.GetKey(c, test)
+					So(err, ShouldBeError)
+					_, err = mc.Increment(c, test, 1, 0)
+					So(err, ShouldBeError)
+					_, err = mc.IncrementExisting(c, test, 1)
+					So(err, ShouldBeError)
+					So(mc.Delete(c, test), ShouldBeError)
+				})
+			}
 		})
 	})
 }

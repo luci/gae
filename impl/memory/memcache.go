@@ -25,6 +25,7 @@ import (
 	"go.chromium.org/luci/common/clock"
 	"go.chromium.org/luci/common/errors"
 
+	"github.com/bradfitz/gomemcache/memcache"
 	"golang.org/x/net/context"
 )
 
@@ -92,7 +93,8 @@ type memcacheData struct {
 	items map[string]*mcDataItem
 	casID uint64
 
-	stats mc.Statistics
+	stats      mc.Statistics
+	strictKeys bool
 }
 
 func (m *memcacheData) mkDataItemLocked(now time.Time, i mc.Item) (ret *mcDataItem) {
@@ -156,6 +158,25 @@ func (m *memcacheData) retrieveLocked(now time.Time, key string) (*mcDataItem, e
 	return ret, nil
 }
 
+// legalKey checks whether the key is valid for the memcached text protocol (implementation lifted from
+// https://github.com/bradfitz/gomemcache/blob/1952afaa557dc08e8e0d89eafab110fb501c1a2b/memcache/memcache.go#L90-L100).
+//
+// If strictKeys is false, all strings are legal keys.
+func (m *memcacheData) legalKey(key string) bool {
+	if !m.strictKeys {
+		return true
+	}
+	if len(key) > 250 {
+		return false
+	}
+	for i := 0; i < len(key); i++ {
+		if key[i] <= ' ' || key[i] == 0x7f {
+			return false
+		}
+	}
+	return true
+}
+
 // memcacheImpl binds the current connection's memcache data to an
 // implementation of {gae.Memcache, gae.Testable}.
 type memcacheImpl struct {
@@ -216,6 +237,10 @@ func (m *memcacheImpl) AddMulti(items []mc.Item, cb mc.RawCB) error {
 	doCBs(items, cb, func(itm mc.Item) error {
 		m.data.lock.Lock()
 		defer m.data.lock.Unlock()
+
+		if !m.data.legalKey(itm.Key()) {
+			return memcache.ErrMalformedKey
+		}
 		if !m.data.hasItemLocked(now, itm.Key()) {
 			m.data.setItemLocked(now, itm)
 			return nil
@@ -231,6 +256,9 @@ func (m *memcacheImpl) CompareAndSwapMulti(items []mc.Item, cb mc.RawCB) error {
 		m.data.lock.Lock()
 		defer m.data.lock.Unlock()
 
+		if !m.data.legalKey(itm.Key()) {
+			return memcache.ErrMalformedKey
+		}
 		if cur, err := m.data.retrieveLocked(now, itm.Key()); err == nil {
 			casid := uint64(0)
 			if mi, ok := itm.(*mcItem); ok && mi != nil {
@@ -254,6 +282,10 @@ func (m *memcacheImpl) SetMulti(items []mc.Item, cb mc.RawCB) error {
 	doCBs(items, cb, func(itm mc.Item) error {
 		m.data.lock.Lock()
 		defer m.data.lock.Unlock()
+
+		if !m.data.legalKey(itm.Key()) {
+			return memcache.ErrMalformedKey
+		}
 		m.data.setItemLocked(now, itm)
 		return nil
 	})
@@ -270,6 +302,10 @@ func (m *memcacheImpl) GetMulti(keys []string, cb mc.RawItemCB) error {
 		itms[i], errs[i] = func() (mc.Item, error) {
 			m.data.lock.Lock()
 			defer m.data.lock.Unlock()
+
+			if !m.data.legalKey(k) {
+				return nil, memcache.ErrMalformedKey
+			}
 			val, err := m.data.retrieveLocked(now, k)
 			if err != nil {
 				return nil, err
@@ -294,6 +330,10 @@ func (m *memcacheImpl) DeleteMulti(keys []string, cb mc.RawCB) error {
 		errs[i] = func() error {
 			m.data.lock.Lock()
 			defer m.data.lock.Unlock()
+
+			if !m.data.legalKey(k) {
+				return memcache.ErrMalformedKey
+			}
 			_, err := m.data.retrieveLocked(now, k)
 			if err != nil {
 				return err
@@ -324,6 +364,9 @@ func (m *memcacheImpl) Increment(key string, delta int64, initialValue *uint64) 
 	m.data.lock.Lock()
 	defer m.data.lock.Unlock()
 
+	if !m.data.legalKey(key) {
+		return 0, memcache.ErrMalformedKey
+	}
 	cur := uint64(0)
 	if initialValue == nil {
 		curItm, err := m.data.retrieveLocked(now, key)
@@ -360,4 +403,14 @@ func (m *memcacheImpl) Stats() (*mc.Statistics, error) {
 
 	ret := m.data.stats
 	return &ret, nil
+}
+
+func (m *memcacheImpl) StrictKeyChecks(strict bool) {
+	m.data.lock.Lock()
+	defer m.data.lock.Unlock()
+	m.data.strictKeys = strict
+}
+
+func (m *memcacheImpl) GetTestable() mc.Testable {
+	return m
 }

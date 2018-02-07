@@ -37,4 +37,18 @@ type RawInterface interface {
 	Flush() error
 
 	Stats() (*Statistics, error)
+
+	// Testable returns this RawInterface's Testing interface. Testing will
+	// return nil if testing is not supported in this implementation.
+	GetTestable() Testable
+}
+
+// Testable is an additional set of functions for testing instrumentation.
+type Testable interface {
+	// StrictKeyChecks enables checking for keys that are invalid according to the memcached text protocol.
+	//
+	// https://github.com/memcached/memcached/blob/ca66b826f25e1db83d191780e0bcac4a070c6911/doc/protocol.txt#L41-L49
+	// Vanilla memcached via https://github.com/bradfitz/gomemcache needs this check.  App Engine uses byte array keys,
+	// so this check is not necessary.
+	StrictKeyChecks(bool)
 }

@@ -78,6 +78,10 @@ func (m *mcCounter) Stats() (*mc.Statistics, error) {
 	return ret, m.c.Stats.up(err)
 }
 
+func (m *mcCounter) GetTestable() mc.Testable {
+	return m.mc.GetTestable()
+}
+
 // FilterMC installs a counter Memcache filter in the context.
 func FilterMC(c context.Context) (context.Context, *MCCounter) {
 	state := &MCCounter{}

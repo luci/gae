@@ -175,3 +175,5 @@ func (m mcImpl) Stats() (*mc.Statistics, error) {
 	}
 	return (*mc.Statistics)(stats), nil
 }
+
+func (m mcImpl) GetTestable() mc.Testable { return nil }

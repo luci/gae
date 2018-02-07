@@ -190,3 +190,9 @@ func Flush(c context.Context) error {
 func Stats(c context.Context) (*Statistics, error) {
 	return Raw(c).Stats()
 }
+
+// GetTestable returns a Testable for the current memcache service in c, or
+// nil if it does not offer one.
+func GetTestable(c context.Context) Testable {
+	return Raw(c).GetTestable()
+}

@@ -124,6 +124,7 @@ func (mc) CompareAndSwapMulti([]memcache.Item, memcache.RawCB) error { panic(ni(
 func (mc) Increment(string, int64, *uint64) (uint64, error)          { panic(ni()) }
 func (mc) Flush() error                                              { panic(ni()) }
 func (mc) Stats() (*memcache.Statistics, error)                      { panic(ni()) }
+func (mc) GetTestable() memcache.Testable                            { panic(ni()) }
 
 var dummyMCInst = mc{}
 
