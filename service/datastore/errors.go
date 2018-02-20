@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"go.chromium.org/gae"
+	"go.chromium.org/gae/symbols"
 
 	"go.chromium.org/luci/common/errors"
 
@@ -31,7 +31,7 @@ var (
 	ErrConcurrentTransaction = datastore.ErrConcurrentTransaction
 
 	// Stop is an alias for "go.chromium.org/gae".Stop
-	Stop = gae.Stop
+	Stop = symbols.Stop
 )
 
 // MakeErrInvalidKey returns an errors.Annotator instance that wraps an invalid
