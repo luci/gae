@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7c95c33_58b6d7f2",
+        "filename": "example_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2018-02-20T23:51:46Z",
+      "side": 1,
+      "message": "that looks wrong to me; this should be an error instead, I think. The struct below has a string key, but this is getting an auto-generated integer ID.",
+      "range": {
+        "startLine": 39,
+        "startChar": 43,
+        "endLine": 39,
+        "endChar": 47
+      },
+      "revId": "e59d8d514b40bf00891196231da1f920cb38cf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
