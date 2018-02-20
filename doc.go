@@ -61,23 +61,24 @@
 //   )
 //
 //   func handler(w http.ResponseWriter, r *http.Request) {
-//     c := prod.UseRequest(r)
+//     c := context.Background()
+//     c = prod.UseRequest(c, r)
 //     // add production filters, etc. here
 //     innerHandler(c, w)
 //   }
 //
 //   type CoolStruct struct {
-//     ID `gae:"$id"`
+//     ID string `gae:"$id"`
 //
 //     Value string
 //   }
 //
 //   func innerHandler(c context.Context, w http.ResponseWriter) {
 //     obj := &CoolStruct{Value: "hello"}
-//     if err := rds.Put(c, obj); err != nil {
-//       http.Error(w, err.String(), http.StatusInternalServerError)
+//     if err := datastore.Put(c, obj); err != nil {
+//       http.Error(w, err.Error(), http.StatusInternalServerError)
 //     }
-//     fmt.Fprintf(w, "I wrote: %s", ds.KeyForObj(obj))
+//     fmt.Fprintf(w, "I wrote: %s", datastore.KeyForObj(c, obj))
 //   }
 //
 // And in your test do:
