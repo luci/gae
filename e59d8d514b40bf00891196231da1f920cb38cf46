@@ -22,6 +22,30 @@
       "revId": "e59d8d514b40bf00891196231da1f920cb38cf46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3e9ac4_5df2b323",
+        "filename": "example_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1148599
+      },
+      "writtenOn": "2018-02-21T00:03:42Z",
+      "side": 1,
+      "message": "I made the creation of the struct set the ID. Does that work for you?",
+      "parentUuid": "b7c95c33_58b6d7f2",
+      "range": {
+        "startLine": 39,
+        "startChar": 43,
+        "endLine": 39,
+        "endChar": 47
+      },
+      "revId": "e59d8d514b40bf00891196231da1f920cb38cf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
