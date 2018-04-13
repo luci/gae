@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64da2097_93515b2c",
+        "filename": "impl/memory/datastore_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-04-13T20:46:15Z",
+      "side": 1,
+      "message": "e.g. see https://github.com/golang/appengine/blob/master/datastore/query.go#L708 which adds padding itself before calling base64.URLEncoding.DecodeString. This is equivalent to base64.RawURLEncoding.DecodeString (and probably was done this way because the code was written before RawURLEncoding existed).",
+      "revId": "f44798d9576de8826a7dd1f0bafaffce6f2443ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00dc0c9_2f85179c",
+        "filename": "impl/memory/datastore_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-04-13T20:46:15Z",
+      "side": 1,
+      "message": "e.g. https://github.com/golang/appengine/blob/master/datastore/query.go#L704 where it strips \u003d\u003d\u003d",
+      "range": {
+        "startLine": 56,
+        "startChar": 53,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "f44798d9576de8826a7dd1f0bafaffce6f2443ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
