@@ -16,6 +16,24 @@
       "revId": "2272a14603c8d7ef25f8ecd599f6f9e5737b13b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa381ff7_5f8a5212",
+        "filename": "service/datastore/errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002080
+      },
+      "writtenOn": "2018-05-04T19:57:28Z",
+      "side": 1,
+      "message": "This is the inner function, which doesn\u0027t have a named return variable.  The purpose is to tell walk to stop walking if a error was found that is not ErrNoSuchEntity.  The found var is a closure from the outer function.\n\nThe code here is actually identical to the code in PS3, but just a lot shorter (Possibly more cryptic? But the function comments should clear it up)",
+      "parentUuid": "4c7df8cf_ec73ff44",
+      "revId": "2272a14603c8d7ef25f8ecd599f6f9e5737b13b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
