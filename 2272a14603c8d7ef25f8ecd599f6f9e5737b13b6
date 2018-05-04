@@ -34,6 +34,24 @@
       "revId": "2272a14603c8d7ef25f8ecd599f6f9e5737b13b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f32586ae_78d8bb51",
+        "filename": "service/datastore/errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1141499
+      },
+      "writtenOn": "2018-05-04T20:02:21Z",
+      "side": 1,
+      "message": "add comment  before \"return found\" saying smth like:\n// if found is false, returns false s.t. errors.Walk stops walking.",
+      "parentUuid": "fa381ff7_5f8a5212",
+      "revId": "2272a14603c8d7ef25f8ecd599f6f9e5737b13b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
