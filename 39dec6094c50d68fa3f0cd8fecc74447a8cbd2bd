@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee7adadd_cbb97708",
+        "filename": "service/datastore/errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-05-04T00:11:48Z",
+      "side": 1,
+      "message": "I\u0027m a bit worried about this API since it will incorrectly \"mask\" other datastore errors.\n\nImagine I fetch two entities, and one is missing, and for the other I get transient RPC error. The outcome of the whole operation in this cause should arguably be \"transient RPC error\" (because it wasn\u0027t fully complete), but users of IsErrNoSuchEntity will see \u0027true\u0027.\n\nBut I guess it is fine? Where are you planning to use this?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "39dec6094c50d68fa3f0cd8fecc74447a8cbd2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
