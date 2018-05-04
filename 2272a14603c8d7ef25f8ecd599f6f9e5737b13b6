@@ -52,6 +52,24 @@
       "revId": "2272a14603c8d7ef25f8ecd599f6f9e5737b13b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa2c8871_46024087",
+        "filename": "service/datastore/errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002080
+      },
+      "writtenOn": "2018-05-04T20:12:02Z",
+      "side": 1,
+      "message": "Done.  I see how this could be super confusing.  Added comments.",
+      "parentUuid": "f32586ae_78d8bb51",
+      "revId": "2272a14603c8d7ef25f8ecd599f6f9e5737b13b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
