@@ -82,12 +82,7 @@ func (f *Flex) Configure(c context.Context, opts ...option.ClientOption) (cfg *C
 	// environ to get environment information. When running locally (e.g. during
 	// development), we extract the email from the Default Application Credentials
 	// and provide some fake defaults for non-essential parts of the config.
-	cfg = &Config{
-		// On Flex, STDERR gets logged independently by the Flex container to. This
-		// adds another path to collect logs when the Stackdriver logging client is
-		// unable to send them.
-		LogToSTDERR: true,
-	}
+	cfg = &Config{}
 	if metadata.OnGCE() {
 		if cfg.ServiceAccountName, err = getMetadata("instance/service-accounts/default/email"); err != nil {
 			return nil, err

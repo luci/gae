@@ -28,7 +28,6 @@ import (
 // These are initialized when the service instance is instantiated.
 type serviceInstanceGlobalInfo struct {
 	*Config
-	*Request
 }
 
 // infoState is the state of the "service/info" service in the current Context.
