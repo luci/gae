@@ -126,10 +126,6 @@ type LoggerConfig struct {
 	// Trace, if not empty, is the trace to associated with each log entry.
 	Trace string
 
-	// LogToSTDERR, if true, indicates that log messages should be tee'd to
-	// a simple STDERR logger prior to being written.
-	LogToSTDERR bool
-
 	// The given labels will be applied to each log entry. This allows to reuse
 	// Logger instance between requests, even if they have different default
 	// labels.
