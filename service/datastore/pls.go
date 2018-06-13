@@ -44,7 +44,8 @@ import (
 //   * GeoPoint
 //   * *Key
 //   * any Type whose underlying type is one of the above types
-//   * Types which implement PropertyConverter on (*Type)
+//   * Types which implement PropertyConverter on (*Type) where *Type itself is
+//     also accepted
 //   * A struct composed of the above types (except for nested slices)
 //   * A slice of any of the above types
 //
