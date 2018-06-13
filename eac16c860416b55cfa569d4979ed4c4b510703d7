@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9cd4051_bc1b6a6c",
+        "filename": "service/datastore/pls_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1154295
+      },
+      "writtenOn": "2018-06-13T03:32:49Z",
+      "side": 1,
+      "message": "this pattern is repeated basically everywhere so I may as well write a convenience function for it or something...",
+      "range": {
+        "startLine": 285,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 4
+      },
+      "revId": "eac16c860416b55cfa569d4979ed4c4b510703d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
