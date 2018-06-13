@@ -36,6 +36,7 @@ type structTag struct {
 	isSlice        bool
 	substructCodec *structCodec
 	convert        bool
+	isPtr          bool
 	metaVal        interface{}
 	isExtra        bool
 	canSet         bool
@@ -280,7 +281,13 @@ func (p *structPLS) save(propMap PropertyMap, prefix string, parentST *structTag
 
 		prop := Property{}
 		if st.convert {
-			prop, err = v.Addr().Interface().(PropertyConverter).ToProperty()
+			var val interface{}
+			if st.isPtr {
+				val = v.Interface()
+			} else {
+				val = v.Addr().Interface()
+			}
+			prop, err = val.(PropertyConverter).ToProperty()
 		} else {
 			err = prop.SetValue(v.Interface(), si)
 		}
@@ -369,7 +376,13 @@ func (p *structPLS) getMetaFor(idx int) (interface{}, bool) {
 	if st.canSet {
 		f := p.o.Field(idx)
 		if st.convert {
-			prop, err := f.Addr().Interface().(PropertyConverter).ToProperty()
+			var val interface{}
+			if st.isPtr {
+				val = f.Interface()
+			} else {
+				val = f.Addr().Interface()
+			}
+			prop, err := val.(PropertyConverter).ToProperty()
 			if err != nil {
 				return nil, false
 			}
@@ -418,8 +431,13 @@ func (p *structPLS) SetMeta(key string, val interface{}) bool {
 		return false
 	}
 	if st.convert {
-		err := p.o.Field(idx).Addr().Interface().(PropertyConverter).FromProperty(
-			MkPropertyNI(val))
+		var s interface{}
+		if st.isPtr {
+			s = p.o.Field(idx).Interface()
+		} else {
+			s = p.o.Field(idx).Addr().Interface()
+		}
+		err := s.(PropertyConverter).FromProperty(MkPropertyNI(val))
 		return err == nil
 	}
 
@@ -558,7 +576,12 @@ func getStructCodecLocked(t reflect.Type) (c *structCodec) {
 			c.bySpecial["extra"] = i
 			continue
 		}
-		st.convert = reflect.PtrTo(ft).Implements(typeOfPropertyConverter)
+		if ft.Kind() == reflect.Ptr {
+			st.convert = ft.Implements(typeOfPropertyConverter)
+			st.isPtr = true
+		} else {
+			st.convert = reflect.PtrTo(ft).Implements(typeOfPropertyConverter)
+		}
 		switch {
 		case name == "":
 			if !f.Anonymous {

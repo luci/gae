@@ -119,6 +119,9 @@ var _ datastore.PropertyConverter = (*{{.}})(nil)
 // '{{.}}' to serialize to an unindexed '[]byte' when used with the
 // "go.chromium.org/gae" library.
 func (p *{{.}}) ToProperty() (prop datastore.Property, err error) {
+	if p == nil {
+		return
+	}
 	data, err := proto.Marshal(p)
 	if err == nil {
 		prop.SetValue(data, datastore.NoIndex)
@@ -129,6 +132,9 @@ func (p *{{.}}) ToProperty() (prop datastore.Property, err error) {
 // FromProperty implements datastore.PropertyConverter. It parses a '[]byte'
 // into an embedded '{{.}}' when used with the "go.chromium.org/gae" library.
 func (p *{{.}}) FromProperty(prop datastore.Property) error {
+	if p == nil {
+		return nil
+	}
 	data, err := prop.Project(datastore.PTBytes)
 	if err != nil {
 		return err
