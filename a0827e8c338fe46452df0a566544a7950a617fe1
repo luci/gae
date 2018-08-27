@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2b573b2_ecbae7af",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-08-27T06:15:10Z",
+      "side": 1,
+      "message": "So, the serialization is now under the lock. It may have negative performance hit for highly concurrent tests. If it feels like a concern, I can introduce an option (in Testable) to turn on __scatter__ explicitly, and have if off by default, and serialize outside the lock if it is off. Should I bother?",
+      "range": {
+        "startLine": 402,
+        "startChar": 3,
+        "endLine": 402,
+        "endChar": 57
+      },
+      "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

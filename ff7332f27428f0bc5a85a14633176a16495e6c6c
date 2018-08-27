@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "279aa7f0_8cfe52d2",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-08-27T06:15:10Z",
+      "side": 0,
+      "message": "this doesn\u0027t feel right...",
+      "range": {
+        "startLine": 133,
+        "startChar": 28,
+        "endLine": 133,
+        "endChar": 32
+      },
+      "revId": "ff7332f27428f0bc5a85a14633176a16495e6c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "925b172f_3bb5e120",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-08-27T06:15:10Z",
+      "side": 0,
+      "message": "rotations per minute? wtf?..",
+      "range": {
+        "startLine": 222,
+        "startChar": 14,
+        "endLine": 222,
+        "endChar": 17
+      },
+      "revId": "ff7332f27428f0bc5a85a14633176a16495e6c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
