@@ -16,6 +16,8 @@ package memory
 
 import (
 	"bytes"
+	"crypto/sha256"
+	"encoding/binary"
 	"fmt"
 	"strings"
 	"sync"
@@ -51,15 +53,22 @@ type dataStoreData struct {
 	// if snap is nil, that means that this is always-consistent, and
 	// getQuerySnaps will return (head, head)
 	snap memStore
+
 	// For testing, see SetTransactionRetryCount.
 	txnFakeRetry int
+
 	// true means that queries with insufficent indexes will pause to add them
 	// and then continue instead of failing.
 	autoIndex bool
+
 	// true means that all of the __...__ keys which are normally automatically
 	// maintained will be omitted. This also means that Put with an incomplete
 	// key will become an error.
 	disableSpecialEntities bool
+
+	// true means __scatter__ and other internal special properties won't be
+	// stripped off from getMutli results.
+	showSpecialProps bool
 
 	// constraints is the fake datastore constraints. By default, this will match
 	// the Constraints of the "impl/prod" datastore.
@@ -127,16 +136,50 @@ func (d *dataStoreData) maybeAutoIndex(err error) bool {
 	return true
 }
 
-func (d *dataStoreData) setDisableSpecialEntities(enabled bool) {
+func (d *dataStoreData) setDisableSpecialEntities(disabled bool) {
 	d.rwlock.Lock()
 	defer d.rwlock.Unlock()
-	d.disableSpecialEntities = true
+	d.disableSpecialEntities = disabled
 }
 
 func (d *dataStoreData) getDisableSpecialEntities() bool {
 	d.rwlock.RLock()
 	defer d.rwlock.RUnlock()
 	return d.disableSpecialEntities
+}
+
+func (d *dataStoreData) setShowSpecialProperties(show bool) {
+	d.rwlock.Lock()
+	defer d.rwlock.Unlock()
+	d.showSpecialProps = show
+}
+
+func (d *dataStoreData) stripSpecialPropsGetCB(cb ds.GetMultiCB) ds.GetMultiCB {
+	d.rwlock.RLock()
+	defer d.rwlock.RUnlock()
+
+	if d.showSpecialProps {
+		return cb
+	}
+
+	return func(idx int, val ds.PropertyMap, err error) error {
+		stripSpecialProps(val)
+		return cb(idx, val, err)
+	}
+}
+
+func (d *dataStoreData) stripSpecialPropsRunCB(cb ds.RawRunCB) ds.RawRunCB {
+	d.rwlock.RLock()
+	defer d.rwlock.RUnlock()
+
+	if d.showSpecialProps {
+		return cb
+	}
+
+	return func(key *ds.Key, val ds.PropertyMap, getCursor ds.CursorCB) error {
+		stripSpecialProps(val)
+		return cb(key, val, getCursor)
+	}
 }
 
 func (d *dataStoreData) getQuerySnaps(consistent bool) (idx, head memStore) {
@@ -219,7 +262,7 @@ func rootIDsKey(kind string) []byte {
 func curVersion(ents memCollection, key []byte) int64 {
 	if ents != nil {
 		if v := ents.Get(key); v != nil {
-			pm, err := rpm(v)
+			pm, err := readPropMap(v)
 			memoryCorruption(err)
 
 			pl := pm.Slice("__version__")
@@ -327,10 +370,9 @@ func (d *dataStoreData) putMulti(keys []*ds.Key, vals []ds.PropertyMap, cb ds.Ne
 	ns := keys[0].Namespace()
 
 	for i, k := range keys {
-		pmap, _ := vals[i].Save(false)
-		dataBytes := serialize.ToBytesWithContext(pmap)
+		newPM, _ := vals[i].Save(false)
 
-		k, err := func() (ret *ds.Key, err error) {
+		k, err := func() (key *ds.Key, err error) {
 			if !lockedAlready {
 				d.rwlock.Lock()
 				defer d.rwlock.Unlock()
@@ -338,23 +380,27 @@ func (d *dataStoreData) putMulti(keys []*ds.Key, vals []ds.PropertyMap, cb ds.Ne
 
 			ents := d.head.GetOrCreateCollection("ents:" + ns)
 
-			ret, err = d.fixKeyLocked(ents, k)
+			key, err = d.fixKeyLocked(ents, k)
 			if err != nil {
 				return
 			}
 			if !d.disableSpecialEntities {
-				incrementLocked(ents, groupMetaKey(ret), 1)
+				incrementLocked(ents, groupMetaKey(key), 1)
 			}
+			keyBlob := keyBytes(key)
 
-			old := ents.Get(keyBytes(ret))
-			oldPM := ds.PropertyMap(nil)
-			if old != nil {
-				if oldPM, err = rpm(old); err != nil {
+			// Now that we have the complete key, we can use it to generate special
+			// __scatter__ property, which is a function of the key.
+			addSpecialProps(keyBlob, newPM)
+
+			var oldPM ds.PropertyMap
+			if old := ents.Get(keyBlob); old != nil {
+				if oldPM, err = readPropMap(old); err != nil {
 					return
 				}
 			}
-			ents.Set(keyBytes(ret), dataBytes)
-			updateIndexes(d.head, ret, oldPM, pmap)
+			ents.Set(keyBlob, serialize.ToBytesWithContext(newPM))
+			updateIndexes(d.head, key, oldPM, newPM)
 			return
 		}()
 		if cb != nil {
@@ -379,7 +425,7 @@ func getMultiInner(keys []*ds.Key, cb ds.GetMultiCB, ents memCollection) {
 		if pdata == nil {
 			cb(i, nil, ds.ErrNoSuchEntity)
 		} else {
-			pm, err := rpm(pdata)
+			pm, err := readPropMap(pdata)
 			cb(i, pm, err)
 		}
 	}
@@ -387,7 +433,7 @@ func getMultiInner(keys []*ds.Key, cb ds.GetMultiCB, ents memCollection) {
 
 func (d *dataStoreData) getMulti(keys []*ds.Key, cb ds.GetMultiCB) error {
 	ents := d.takeSnapshot().GetCollection("ents:" + keys[0].Namespace())
-	getMultiInner(keys, cb, ents)
+	getMultiInner(keys, d.stripSpecialPropsGetCB(cb), ents)
 	return nil
 }
 
@@ -418,7 +464,7 @@ func (d *dataStoreData) delMulti(keys []*ds.Key, cb ds.DeleteMultiCB, lockedAlre
 					incrementLocked(ents, groupMetaKey(k), 1)
 				}
 				if old := ents.Get(kb); old != nil {
-					oldPM, err := rpm(old)
+					oldPM, err := readPropMap(old)
 					if err != nil {
 						return err
 					}
@@ -624,7 +670,7 @@ func (td *txnDataStoreData) getMulti(keys []*ds.Key, cb ds.GetMultiCB) error {
 		}
 	}
 	ents := td.snap.GetCollection("ents:" + keys[0].Namespace())
-	getMultiInner(keys, cb, ents)
+	getMultiInner(keys, td.parent.stripSpecialPropsGetCB(cb), ents)
 	return nil
 }
 
@@ -642,7 +688,7 @@ func keyBytes(key *ds.Key) []byte {
 	return serialize.ToBytes(ds.MkProperty(key))
 }
 
-func rpm(data []byte) (ds.PropertyMap, error) {
+func readPropMap(data []byte) (ds.PropertyMap, error) {
 	return serialize.ReadPropertyMap(bytes.NewBuffer(data),
 		serialize.WithContext, ds.MkKeyContext("", ""))
 }
@@ -667,4 +713,26 @@ func trimPrefix(v, p string) (string, bool) {
 		return v[len(p):], true
 	}
 	return v, false
+}
+
+// __scatter__ is a "hidden" indexed byte string property containing a hash of
+// the key (of some unspecified nature). It is added to a small percentage of
+// the datastore entities (0.78% in prod), to be used in .order(__scatter__)
+// queries, to aid mapper frameworks to partition the key space into
+// approximately even ranges.
+//
+// See https://github.com/GoogleCloudPlatform/appengine-mapreduce/wiki/ScatterPropertyImplementation
+//
+// The implementation here roughly matches what dev_appserver does.
+
+func addSpecialProps(keyBlob []byte, pm ds.PropertyMap) {
+	h := sha256.Sum256(keyBlob)
+	i := binary.BigEndian.Uint16(h[:2])
+	if i >= 32768 {
+		pm["__scatter__"] = ds.MkProperty(h[:])
+	}
+}
+
+func stripSpecialProps(pm ds.PropertyMap) {
+	delete(pm, "__scatter__")
 }
