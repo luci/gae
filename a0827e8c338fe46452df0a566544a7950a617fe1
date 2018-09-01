@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "adbdd806_95697dc8",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2018-09-01T07:45:34Z",
+      "side": 1,
+      "message": "would you mind pulling the cleanups into a separate CL we can commit right away?",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 373,
+        "endChar": 7
+      },
+      "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2b573b2_ecbae7af",
         "filename": "impl/memory/datastore_data.go",
         "patchSetId": 1
@@ -19,6 +42,47 @@
         "endLine": 402,
         "endChar": 57
       },
+      "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6757f0_a495c765",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2018-09-01T07:45:34Z",
+      "side": 1,
+      "message": "eh I would just add a note here, I wouldn\u0027t expect to see a noticeable hit",
+      "parentUuid": "c2b573b2_ecbae7af",
+      "range": {
+        "startLine": 402,
+        "startChar": 3,
+        "endLine": 402,
+        "endChar": 57
+      },
+      "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f40985_b63ec63b",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2018-09-01T07:45:34Z",
+      "side": 1,
+      "message": "extra newline",
       "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
