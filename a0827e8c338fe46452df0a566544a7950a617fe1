@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8005bd90_9292c02b",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-09-02T08:34:44Z",
+      "side": 1,
+      "message": "Done: https://chromium-review.googlesource.com/c/infra/luci/gae/+/1201202",
+      "parentUuid": "adbdd806_95697dc8",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 373,
+        "endChar": 7
+      },
+      "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2b573b2_ecbae7af",
         "filename": "impl/memory/datastore_data.go",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ac190615_d60b6a6e",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-09-02T08:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c6757f0_a495c765",
+      "range": {
+        "startLine": 402,
+        "startChar": 3,
+        "endLine": 402,
+        "endChar": 57
+      },
+      "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16f40985_b63ec63b",
         "filename": "impl/memory/datastore_data.go",
         "patchSetId": 1
@@ -86,6 +134,24 @@
       "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d5ee22_9f9a32a7",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2018-09-02T08:34:44Z",
+      "side": 1,
+      "message": "go fmt does this",
+      "parentUuid": "16f40985_b63ec63b",
+      "revId": "a0827e8c338fe46452df0a566544a7950a617fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
