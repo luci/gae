@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6540783b_ebfa56e9",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-02T01:12:39Z",
+      "side": 1,
+      "message": "comment here ~\"This is known as \u0027*Entity\u0027 in the upstream libraries.\"",
+      "range": {
+        "startLine": 169,
+        "startChar": 43,
+        "endLine": 169,
+        "endChar": 49
+      },
+      "revId": "162729ee11bc45c17b392e0d4b5fd29776c81156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893dca7d_1c0a9af7",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-02T01:12:39Z",
+      "side": 1,
+      "message": "I think you may need to do a deep copy of this here to prevent users from being able to mutate the guts of a property (other than the *Property itself)",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 11
+      },
+      "revId": "162729ee11bc45c17b392e0d4b5fd29776c81156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
