@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66eafd0c_d45657d3",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-07T20:35:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be independent? impls can store whatever they want as a PropertyMap.",
+      "parentUuid": "6540783b_ebfa56e9",
+      "range": {
+        "startLine": 169,
+        "startChar": 43,
+        "endLine": 169,
+        "endChar": 49
+      },
+      "revId": "162729ee11bc45c17b392e0d4b5fd29776c81156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "893dca7d_1c0a9af7",
         "filename": "service/datastore/properties.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "162729ee11bc45c17b392e0d4b5fd29776c81156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0528a37_a0c59d69",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-07T20:35:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "893dca7d_1c0a9af7",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 11
+      },
+      "revId": "162729ee11bc45c17b392e0d4b5fd29776c81156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
