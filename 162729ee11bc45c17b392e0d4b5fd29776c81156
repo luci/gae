@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5c372240_bec14754",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-07T20:42:42Z",
+      "side": 1,
+      "message": "Yes, technically, but practically speaking these sorts of comments help folks when trying to map luci/gae concepts to e.g. stackoverflow copypasta.",
+      "parentUuid": "66eafd0c_d45657d3",
+      "range": {
+        "startLine": 169,
+        "startChar": 43,
+        "endLine": 169,
+        "endChar": 49
+      },
+      "revId": "162729ee11bc45c17b392e0d4b5fd29776c81156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "893dca7d_1c0a9af7",
         "filename": "service/datastore/properties.go",
         "patchSetId": 1
