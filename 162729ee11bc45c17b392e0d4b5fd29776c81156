@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1d92e2cf_695a4d76",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-07T21:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c372240_bec14754",
+      "range": {
+        "startLine": 169,
+        "startChar": 43,
+        "endLine": 169,
+        "endChar": 49
+      },
+      "revId": "162729ee11bc45c17b392e0d4b5fd29776c81156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "893dca7d_1c0a9af7",
         "filename": "service/datastore/properties.go",
         "patchSetId": 1
