@@ -17,6 +17,7 @@ package cloud
 import (
 	"fmt"
 	"reflect"
+	"sort"
 	"strings"
 	"time"
 
@@ -384,6 +385,9 @@ func (bds *boundDatastore) gaePropertyToNative(name string, pdata ds.PropertyDat
 		case ds.PTKey:
 			return bds.gaeKeysToNative(prop.Value().(*ds.Key))[0], nil
 
+		case ds.PTPropertyMap:
+			return bds.gaeEntityToNative(prop.Value().(ds.PropertyMap)), nil
+
 		default:
 			return nil, fmt.Errorf("unsupported property type: %v", pt)
 		}
@@ -441,6 +445,9 @@ func (bds *boundDatastore) nativePropertyToGAE(nativeProp datastore.Property) (
 
 		case *datastore.Key:
 			nv = bds.nativeKeysToGAE(nvt)[0]
+
+		case *datastore.Entity:
+			nv = bds.nativeEntityToGAE(nvt)
 
 		default:
 			return fmt.Errorf("unsupported datastore.Value type for %q: %T", name, nvt)
@@ -525,6 +532,90 @@ func (bds *boundDatastore) nativeKeysToGAE(nativeKeys ...*datastore.Key) []*ds.K
 		keys[i] = kc.NewKeyToks(toks)
 	}
 	return keys
+}
+
+// nativeEntityToGAE returns a ds.PropertyMap representation of the given
+// *datastore.Entity. Since properties can themselves be *datastore.Entities,
+// the caller is responsible for ensuring there are no reference cycles.
+func (bds *boundDatastore) nativeEntityToGAE(ent *datastore.Entity) ds.PropertyMap {
+	pm := ds.PropertyMap{}
+	if ent == nil {
+		return pm
+	}
+	if ent.Key != nil {
+		pm["__key__"] = ds.MkProperty(bds.nativeKeysToGAE(ent.Key)[0])
+	}
+	// Property ordering is lost since it's encoded to a map, but *datastore.Entity is
+	// sourced from https://godoc.org/google.golang.org/genproto/googleapis/datastore/v1#Entity
+	// which originally held properties in a map to begin with, meaning order is irrelevant.
+	for _, p := range ent.Properties {
+		val := p.Value
+		// Convert types not natively supported by ds.
+		switch v := val.(type) {
+		case time.Time:
+			val = v.UTC()
+		case datastore.GeoPoint:
+			val = ds.GeoPoint{Lat: v.Lat, Lng: v.Lng}
+		case *datastore.Key:
+			val = bds.nativeKeysToGAE(v)[0]
+		case *datastore.Entity:
+			val = bds.nativeEntityToGAE(v)
+		}
+		if ent, ok := val.(*datastore.Entity); ok {
+			val = bds.nativeEntityToGAE(ent)
+		}
+		if p.NoIndex {
+			pm[p.Name] = ds.MkPropertyNI(val)
+		} else {
+			pm[p.Name] = ds.MkProperty(val)
+		}
+	}
+	return pm
+}
+
+// gaeEntityToNative returns a *datastore.Entity representation of the given
+// PropertyMap (assumed to have been produced by nativeEntityToGAE).
+func (bds *boundDatastore) gaeEntityToNative(pm ds.PropertyMap) *datastore.Entity {
+	ent := &datastore.Entity{
+		Properties: []datastore.Property{},
+	}
+	// Ensure stable order.
+	keys := make([]string, len(pm))
+	i := 0
+	for name := range pm {
+		keys[i] = name
+		i += 1
+	}
+	sort.Strings(keys)
+	for _, name := range keys {
+		// nativeEntityToGAE always encodes to *ds.Property.
+		prop := pm[name].(ds.Property)
+		val := prop.Value()
+		// nativeEntityToGAE stores *datastore.Entity.Key as __key__.
+		if name == "__key__" {
+			ent.Key = bds.gaeKeysToNative(val.(*ds.Key))[0]
+			continue
+		}
+		p := datastore.Property{
+			Name:    name,
+			NoIndex: prop.IndexSetting() == ds.NoIndex,
+		}
+		// Reverse encoding done by nativeEntityToGAE.
+		switch t := val.(type) {
+		case time.Time:
+			p.Value = t.Local()
+		case ds.GeoPoint:
+			p.Value = datastore.GeoPoint{Lat: t.Lat, Lng: t.Lng}
+		case *ds.Key:
+			p.Value = bds.gaeKeysToNative(t)[0]
+		case ds.PropertyMap:
+			p.Value = bds.gaeEntityToNative(t)
+		default:
+			p.Value = t
+		}
+		ent.Properties = append(ent.Properties, p)
+	}
+	return ent
 }
 
 // nativePropertyLoadSaver is a ds.PropertyMap which implements
