@@ -16,6 +16,208 @@
       "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd910f6_3b3b22e7",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "Yeah this can\u0027t be encoded in the datastore, so the cloud library would have to produce something malicious... probably won\u0027t :)\n\nThough this does make me wonder what happens if you FEED the library something with cycles... probably proto encoding will just hang/fail and you\u0027ll end up shooting your own foot.",
+      "parentUuid": "dbaf629b_9c17e0db",
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e212203b_5b2af420",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "technically nil PropertyMap should behave itself if you want to save the alloc",
+      "range": {
+        "startLine": 543,
+        "startChar": 9,
+        "endLine": 543,
+        "endChar": 11
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b3a0a9_348d4b34",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "correct",
+      "range": {
+        "startLine": 550,
+        "startChar": 69,
+        "endLine": 550,
+        "endChar": 88
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5f59d7d_dd325ac0",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "can\u0027t nativePropertyToGAE be used here? (and vice versa in the reverse function?)",
+      "range": {
+        "startLine": 553,
+        "startChar": 5,
+        "endLine": 553,
+        "endChar": 12
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9f9bc1_6c9d6d62",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "wait... isn\u0027t this covered by line 561?",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 45
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4cdca96_bb5ca638",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "I think this won\u0027t work properly for repeated fields (i.e. one property name with multiple values associated with it?).",
+      "range": {
+        "startLine": 568,
+        "startChar": 3,
+        "endLine": 568,
+        "endChar": 13
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff95225c_fd9369b8",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "I think this is the same as\n\n   keys :\u003d make([]string, 0, len(pm))\n   for key :\u003d range pm {\n     keys \u003d append(keys, key)\n   }\n\n? The `i` here is really just externalizing the slice length integer. I don\u0027t think it\u0027s any more efficient, as long as the slice has sufficient capacity.",
+      "range": {
+        "startLine": 585,
+        "startChar": 1,
+        "endLine": 585,
+        "endChar": 4
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d00b2f7_35d162f7",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "no `*` I think",
+      "range": {
+        "startLine": 591,
+        "startChar": 41,
+        "endLine": 591,
+        "endChar": 42
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81096716_7980b906",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-09T09:14:56Z",
+      "side": 1,
+      "message": "this will fail for repeated properties",
+      "range": {
+        "startLine": 592,
+        "startChar": 20,
+        "endLine": 592,
+        "endChar": 22
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
