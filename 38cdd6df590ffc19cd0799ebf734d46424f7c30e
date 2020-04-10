@@ -313,6 +313,30 @@
     },
     {
       "key": {
+        "uuid": "2062569d_6cf3cc2e",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-10T02:58:45Z",
+      "side": 1,
+      "message": "Correct; 3-arg make preallocates the capacity you give it. It would only realloc if you run past that with an append.",
+      "parentUuid": "c10a91f3_a6106441",
+      "range": {
+        "startLine": 585,
+        "startChar": 1,
+        "endLine": 585,
+        "endChar": 4
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d00b2f7_35d162f7",
         "filename": "impl/cloud/datastore.go",
         "patchSetId": 1
