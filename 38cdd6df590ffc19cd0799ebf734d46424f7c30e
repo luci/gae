@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e703aa51_d852e169",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "It keeps trying to recursively encode the same thing so it appears to hang. In practice GAE\u0027ll time out and tests\u0027ll hit max recursion depth.",
+      "parentUuid": "efd910f6_3b3b22e7",
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e212203b_5b2af420",
         "filename": "impl/cloud/datastore.go",
         "patchSetId": 1
@@ -57,6 +75,30 @@
       "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a26e96_fbbd4088",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e212203b_5b2af420",
+      "range": {
+        "startLine": 543,
+        "startChar": 9,
+        "endLine": 543,
+        "endChar": 11
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +148,30 @@
     },
     {
       "key": {
+        "uuid": "413f913c_49f3fb17",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f59d7d_dd325ac0",
+      "range": {
+        "startLine": 553,
+        "startChar": 5,
+        "endLine": 553,
+        "endChar": 12
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa9f9bc1_6c9d6d62",
         "filename": "impl/cloud/datastore.go",
         "patchSetId": 1
@@ -126,6 +192,30 @@
       "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ddc258_45af53f0",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9f9bc1_6c9d6d62",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 45
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +242,30 @@
     },
     {
       "key": {
+        "uuid": "99ac2cb2_d9b45942",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4cdca96_bb5ca638",
+      "range": {
+        "startLine": 568,
+        "startChar": 3,
+        "endLine": 568,
+        "endChar": 13
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff95225c_fd9369b8",
         "filename": "impl/cloud/datastore.go",
         "patchSetId": 1
@@ -172,6 +286,30 @@
       "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c10a91f3_a6106441",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "I thought it was more efficient to preallocate the slice compared to repeated append. Though I imagine if you use three-arg make then it probably isn\u0027t resizing it every time because it knows the maximum size. Done.",
+      "parentUuid": "ff95225c_fd9369b8",
+      "range": {
+        "startLine": 585,
+        "startChar": 1,
+        "endLine": 585,
+        "endChar": 4
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -198,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "51670ab3_d0be4068",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d00b2f7_35d162f7",
+      "range": {
+        "startLine": 591,
+        "startChar": 41,
+        "endLine": 591,
+        "endChar": 42
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81096716_7980b906",
         "filename": "impl/cloud/datastore.go",
         "patchSetId": 1
@@ -218,6 +380,30 @@
       "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16de8ef6_f40c8895",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-10T02:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81096716_7980b906",
+      "range": {
+        "startLine": 592,
+        "startChar": 20,
+        "endLine": 592,
+        "endChar": 22
+      },
+      "revId": "38cdd6df590ffc19cd0799ebf734d46424f7c30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
