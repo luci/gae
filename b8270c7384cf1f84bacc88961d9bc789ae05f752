@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a061d789_b9846d51",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-17T01:28:23Z",
+      "side": 1,
+      "message": "It shouldn\u0027t be indexed, but serialize is calling IndexTypeAndValue unconditionally (indexed or not).",
+      "revId": "b8270c7384cf1f84bacc88961d9bc789ae05f752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
