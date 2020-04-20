@@ -87,6 +87,24 @@
       "revId": "c492bd3bb405358b04af363e141834693f39aa11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd612e9_51cf5e95",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-20T23:54:54Z",
+      "side": 1,
+      "message": "I\u0027ll add an option for this.",
+      "parentUuid": "a6c6029d_74819631",
+      "revId": "c492bd3bb405358b04af363e141834693f39aa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
