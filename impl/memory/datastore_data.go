@@ -637,17 +637,17 @@ func (td *txnDataStoreData) writeMutation(getOnly bool, key *ds.Key, data ds.Pro
 	defer td.lock.Unlock()
 
 	if _, ok := td.muts[rk]; !ok {
-		limit := 1
-		if td.txn.isXG {
-			limit = xgEGLimit
-		}
-		if len(td.muts)+1 > limit {
-			msg := "cross-group transaction need to be explicitly specified (xg=True)"
-			if td.txn.isXG {
-				msg = "operating on too many entity groups in a single transaction"
-			}
-			return errors.New(msg)
-		}
+		//limit := 1
+		//if td.txn.isXG {
+		//	limit = xgEGLimit
+		//}
+		//If len(td.muts)+1 > limit {
+		//	msg := "cross-group transaction need to be explicitly specified (xg=True)"
+		//	if td.txn.isXG {
+		//		msg = "operating on too many entity groups in a single transaction"
+		//	}
+		//	return errors.New(msg)
+		//}
 		td.muts[rk] = []txnMutation{}
 	}
 	if !getOnly {
