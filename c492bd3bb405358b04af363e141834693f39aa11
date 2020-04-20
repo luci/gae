@@ -51,6 +51,24 @@
       "revId": "c492bd3bb405358b04af363e141834693f39aa11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd010cc6_97c67909",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-20T23:51:13Z",
+      "side": 1,
+      "message": "None of our current appengine apps use firestore yet though, so I\u0027m inclined to keep this as-is. I\u0027ll add something to the error though to give a hint.",
+      "parentUuid": "0ecb5f11_5fb0eb3a",
+      "revId": "c492bd3bb405358b04af363e141834693f39aa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
