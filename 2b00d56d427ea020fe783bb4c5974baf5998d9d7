@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6686a598_6b895f8e",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-04-20T20:52:58Z",
+      "side": 0,
+      "message": "this is a cool way to write \u0027if\u0027",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "2b00d56d427ea020fe783bb4c5974baf5998d9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60f0ebb6_4e6c7bd7",
+        "filename": "impl/cloud/datastore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-04-20T20:52:58Z",
+      "side": 0,
+      "message": "Does cloud datastore library defaults to multiple attempts? If not, this CL removes default retries which may result in more flaky errors.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 14
+      },
+      "revId": "2b00d56d427ea020fe783bb4c5974baf5998d9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
