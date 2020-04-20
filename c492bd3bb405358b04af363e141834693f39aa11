@@ -16,6 +16,41 @@
       "revId": "c492bd3bb405358b04af363e141834693f39aa11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ccf7a0f_278433e1",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2020-04-20T23:48:18Z",
+      "side": 1,
+      "message": "err nvm",
+      "parentUuid": "e4410a50_c707a457",
+      "revId": "c492bd3bb405358b04af363e141834693f39aa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ecb5f11_5fb0eb3a",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2020-04-20T23:48:18Z",
+      "side": 1,
+      "message": "should we delete this check too? this is inconsistent with Firestore which does not have this limitation.\nall new cloud projects use \"firestore in datstore mode\". existing projects will switch eventually.",
+      "revId": "c492bd3bb405358b04af363e141834693f39aa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
