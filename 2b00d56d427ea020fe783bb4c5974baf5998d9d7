@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dab64ea_7222182e",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2020-04-20T19:43:48Z",
+      "side": 0,
+      "message": "this const is now unused. should be removed too",
+      "range": {
+        "startLine": 642,
+        "startChar": 11,
+        "endLine": 642,
+        "endChar": 20
+      },
+      "revId": "2b00d56d427ea020fe783bb4c5974baf5998d9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
