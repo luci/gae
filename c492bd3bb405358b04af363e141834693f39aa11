@@ -69,6 +69,24 @@
       "revId": "c492bd3bb405358b04af363e141834693f39aa11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c6029d_74819631",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1114299
+      },
+      "writtenOn": "2020-04-20T23:54:18Z",
+      "side": 1,
+      "message": "i believe this is false: https://source.chromium.org/chromium/infra/infra/+/master:go/src/infra/appengine/rotation-proxy/\n\nand they use XG: https://source.chromium.org/chromium/infra/infra/+/master:go/src/infra/appengine/rotation-proxy/rotation_proxy_server.go;l\u003d64;drc\u003da83b4e6321bb41f96bac54ce8aa3c79754c4a178\n\nif they increase their number of entities in a test to exceed 25, their test will start failing, incorrectly.",
+      "parentUuid": "dd010cc6_97c67909",
+      "revId": "c492bd3bb405358b04af363e141834693f39aa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
