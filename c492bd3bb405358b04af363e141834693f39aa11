@@ -141,6 +141,24 @@
       "revId": "c492bd3bb405358b04af363e141834693f39aa11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca0c4357_60fe836e",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-21T01:06:22Z",
+      "side": 1,
+      "message": "\u003e \u003e Adding an option is turning into a substantial amount of work.\n\u003e \u003e \n\u003e \u003e Do you think that rotation-proxy will start using large cross-group transactions soon? \n\u003e \n\u003e they probably will, in prod, but how does it matter? the problem is only if they try to insert \u003e25 entities *in tests*. I doubt they will do that.\n\u003e \n\u003e \u003e Considering that the vast majority of our apps are NOT using firestore, and rotation-proxy is rather new and relatively small, if they\u0027re not planning to do this sort of transaction soon, I would be inclined to wait.\n\u003e \u003e \n\u003e \u003e Reading the rotation-proxy code, it looks like they only use two transaction statements of dubious worth. The first does a multi-group \"Get\" operation; this is probably not necessary, since Get is consistent. \n\u003e \n\u003e I had the same question, but i think they prefer to see a consistent view across entity groups.\n\nI challenge them, using the api of this application, to ever observe a partially written state. This use of transactions is unnecessary.\n\n\u003e \n\u003e \u003e The second does a multi-group blind \"Put\". This is probably also not necessary, since the likelihood of a single Put failing is ~0, and a simple retry on the Put operation would be good enough, since there\u0027s no actual read-then-write operation happening in the transaction, multiple of these write RPCs will race anyway.\n\u003e \n\u003e I personally like guarantees :)\n\nThis is an extremely weak guarantee; Like I said above, retrying the Put once or twice will achieve the same externally-visible result. Unless they\u0027re writing entities which are too large, I don\u0027t think I\u0027ve ever seen a multiput RPC partially fail.\n\n\u003e \n\u003e \u003e I\u0027m inclined to just update the error message and leave this as-is.\n\u003e \n\u003e to be clear, my suggestion was to remove this if statement altogether. Was this considered?\n\nYes, it was considered and I don\u0027t like it for the reasons I\u0027ve listed above (i.e. the applications with complicated transaction usage that we do actually have aren\u0027t running on firestore). Automatic firestore upgrades have been promised for a while (since at least 2 years ago), and haven\u0027t yet materialized.",
+      "parentUuid": "06ca9698_3fb067ff",
+      "revId": "c492bd3bb405358b04af363e141834693f39aa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
