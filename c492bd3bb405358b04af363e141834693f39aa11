@@ -105,6 +105,24 @@
       "revId": "c492bd3bb405358b04af363e141834693f39aa11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ab9ba5e_7af09850",
+        "filename": "impl/memory/datastore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-21T00:51:34Z",
+      "side": 1,
+      "message": "Adding an option is turning into a substantial amount of work.\n\nDo you think that rotation-proxy will start using large cross-group transactions soon? Considering that the vast majority of our apps are NOT using firestore, and rotation-proxy is rather new and relatively small, if they\u0027re not planning to do this sort of transaction soon, I would be inclined to wait.\n\nReading the rotation-proxy code, it looks like they only use two transaction statements of dubious worth. The first does a multi-group \"Get\" operation; this is probably not necessary, since Get is consistent. The second does a multi-group blind \"Put\". This is probably also not necessary, since the likelihood of a single Put failing is ~0, and a simple retry on the Put operation would be good enough, since there\u0027s no actual read-then-write operation happening in the transaction, multiple of these write RPCs will race anyway.\n\nI\u0027m inclined to just update the error message and leave this as-is.",
+      "parentUuid": "bdd612e9_51cf5e95",
+      "revId": "c492bd3bb405358b04af363e141834693f39aa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
