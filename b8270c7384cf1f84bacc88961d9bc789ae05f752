@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2ca0eeec_d61a8054",
+        "filename": "service/datastore/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-21T21:04:57Z",
+      "side": 1,
+      "message": "I didn\u0027t rename it for now...",
+      "parentUuid": "307a42f1_ac25ffd6",
+      "revId": "b8270c7384cf1f84bacc88961d9bc789ae05f752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95ef1349_5df52d95",
         "filename": "service/datastore/serialize/serialize_test.go",
         "patchSetId": 1
@@ -57,6 +75,30 @@
       "revId": "b8270c7384cf1f84bacc88961d9bc789ae05f752",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e4b35c_ca606113",
+        "filename": "service/datastore/serialize/serialize_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-21T21:04:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ef1349_5df52d95",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 43
+      },
+      "revId": "b8270c7384cf1f84bacc88961d9bc789ae05f752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
