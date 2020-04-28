@@ -16,6 +16,24 @@
       "revId": "9383f67cdd8f072f5f1b7e4d06304913e449aa91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4307b55d_b0505b25",
+        "filename": "service/datastore/raw_interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-28T22:13:40Z",
+      "side": 1,
+      "message": "Ah, yep, forgot to delete these",
+      "parentUuid": "9d2aa79c_e2deb589",
+      "revId": "9383f67cdd8f072f5f1b7e4d06304913e449aa91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
