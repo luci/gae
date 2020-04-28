@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d2aa79c_e2deb589",
+        "filename": "service/datastore/raw_interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003211
+      },
+      "writtenOn": "2020-04-28T22:05:35Z",
+      "side": 1,
+      "message": "I think these lines no longer apply because the callback doesn\u0027t return anything. Same for DeleteMultiCB. The comment was only adjusted for NewKeyCB.",
+      "revId": "9383f67cdd8f072f5f1b7e4d06304913e449aa91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
