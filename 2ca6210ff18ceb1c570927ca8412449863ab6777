@@ -46,6 +46,30 @@
       "revId": "2ca6210ff18ceb1c570927ca8412449863ab6777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc3fed7_b5017ca3",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-30T22:01:41Z",
+      "side": 1,
+      "message": "Yep, you got it. I\u0027ve updated this to make it even clearer.",
+      "parentUuid": "952c477b_80589417",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 41
+      },
+      "revId": "2ca6210ff18ceb1c570927ca8412449863ab6777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
