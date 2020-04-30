@@ -27,6 +27,13 @@ import (
 
 type fakeRDS struct{ RawInterface }
 
+func (fakeRDS) PutMulti(keys []*Key, vals []PropertyMap, cb NewKeyCB) error {
+	for i, key := range keys {
+		cb(i, key, nil)
+	}
+	return nil
+}
+
 func (fakeRDS) Constraints() Constraints { return Constraints{} }
 
 func TestCheckFilter(t *testing.T) {
@@ -116,12 +123,10 @@ func TestCheckFilter(t *testing.T) {
 
 			vals = []PropertyMap{{}}
 			hit := false
-			So(func() {
-				So(rds.PutMulti(keys, vals, func(_ int, k *Key, err error) {
-					hit = true
-				}), ShouldBeNil)
-			}, ShouldPanic)
-			So(hit, ShouldBeFalse)
+			So(rds.PutMulti(keys, vals, func(_ int, k *Key, err error) {
+				hit = true
+			}), ShouldBeNil)
+			So(hit, ShouldBeTrue)
 		})
 
 		Convey("DeleteMulti", func() {
