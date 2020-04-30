@@ -22,6 +22,30 @@
       "revId": "2ca6210ff18ceb1c570927ca8412449863ab6777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952c477b_80589417",
+        "filename": "service/datastore/batcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-04-30T19:44:29Z",
+      "side": 1,
+      "message": "Ah, I see. \"batchingSpecified\" means WithBatching(...) was explicitly used, which means batchingEnabled is not bogus.\n\nI think it would be cleaner if terms are reversed: \n  \n  if batchingSpecified \u0026\u0026 !batchingEnabled {\n     ...\n  }",
+      "parentUuid": "68fb2cbf_a841013f",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 41
+      },
+      "revId": "2ca6210ff18ceb1c570927ca8412449863ab6777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
