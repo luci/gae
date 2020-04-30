@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30faa26c_de031fe3",
+        "filename": "service/datastore/context_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-04-30T22:47:40Z",
+      "side": 0,
+      "message": "this \"test\" was already goofy; 1) checkFilter is an internal type and 2) no one needs this.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "95fb5aee0263cacae7a1f9600558602b3315fca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
