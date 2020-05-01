@@ -68,6 +68,53 @@
       "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f37dd553_226fe66f",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-05-01T20:03:25Z",
+      "side": 1,
+      "message": "Another edit: I realize that `dat` is small in 99.9% of cases. But I don\u0027t want a sudden explosion in algorithmic complexity if something goes wrong with e.g. GetMulti(\u003cbatch with 500 entities\u003e). I hope keeping `dat` sorted isn\u0027t very difficult, so it would be nice to avoid accidental O(N^2*log(N)) if possible.",
+      "parentUuid": "757f1176_12763e9c",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 210,
+        "endChar": 15
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87804c22_5386803d",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-05-01T20:03:25Z",
+      "side": 1,
+      "message": "Also I suspect this can be optimized with binary search as well, but as you prefer.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 2
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
