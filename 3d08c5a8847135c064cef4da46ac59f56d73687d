@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13728bfb_4a44a624",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-05-01T19:56:47Z",
+      "side": 1,
+      "message": "should it be moved to an \u0027internal\u0027 package then?",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9562a9df_e3aa41ed",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-05-01T19:56:47Z",
+      "side": 1,
+      "message": "what is this?",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757f1176_12763e9c",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-05-01T19:56:47Z",
+      "side": 1,
+      "message": "Is this used often? I\u0027m not a fan of accidentally calling sort.Ints N times in a loop (which is very easy to do with OriginalIndex). \n\nEdit: yep, it is used in loops. Can we keep `dat` sorted by construction and get rid of sort.Ints? I don\u0027t think it would be much more complicated. Since (I suspect) MarkForRemoval is also called sequentially, keeping `dat` sorted would be fast (e.g. see if we can append new dropped index to the end, fallback to binary search and insertion otherwise).",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 210,
+        "endChar": 15
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
