@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "80b77ea2_b046fc3a",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-02T16:29:04Z",
+      "side": 1,
+      "message": "Possibly; in general a filter implementation would need to reimplement this if it had per-item errors though. For that reason I\u0027d prefer to keep it a public symbol.",
+      "parentUuid": "13728bfb_4a44a624",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9562a9df_e3aa41ed",
         "filename": "service/datastore/dropped_arg_tracker.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-01T19:56:47Z",
       "side": 1,
       "message": "what is this?",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d32d4e5_89a27fdb",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-02T16:29:04Z",
+      "side": 1,
+      "message": "er, leftover terminology, fixed.",
+      "parentUuid": "9562a9df_e3aa41ed",
       "range": {
         "startLine": 46,
         "startChar": 4,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8eff6c9c_042190b3",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-02T16:29:04Z",
+      "side": 1,
+      "message": "Yep, I\u0027ll keep dat sorted by construction. I think to do more efficient OriginalIndex operations we\u0027ll have to pick a different layout of data though. Note how reducedIndex is incremented as we walk `dat`, so it\u0027s currently a \u0027moving target\u0027.\n\nPerhaps if we stored the reduced indices in `dat`, then the lookup could be\n  * binary search to find the nearest reduced index\n  * add len(dat prefix) to reducedIndex\n\nAnd then MarkForRemoval would (since we know it\u0027s in order) append (originalIndex - len(dat)) to dat... I think?",
+      "parentUuid": "f37dd553_226fe66f",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 210,
+        "endChar": 15
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87804c22_5386803d",
         "filename": "service/datastore/dropped_arg_tracker.go",
         "patchSetId": 4
@@ -115,6 +187,30 @@
       "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6dcc8c7_ec471a7f",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-02T16:29:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87804c22_5386803d",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 2
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
