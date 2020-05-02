@@ -52,7 +52,9 @@ func (tcf *checkFilter) GetMulti(keys []*Key, meta MultiMetaGetter, cb GetMultiC
 	if cb == nil {
 		return fmt.Errorf("datastore: GetMulti callback is nil")
 	}
-	lme := errors.NewLazyMultiError(len(keys))
+
+	var dat DroppedArgTracker
+
 	for i, k := range keys {
 		var err error
 		switch {
@@ -62,16 +64,19 @@ func (tcf *checkFilter) GetMulti(keys []*Key, meta MultiMetaGetter, cb GetMultiC
 			err = MakeErrInvalidKey("key [%s] is not valid in context %s", k, tcf.kc).Err()
 		}
 		if err != nil {
-			lme.Assign(i, err)
+			cb(i, nil, err)
+			dat.MarkForRemoval(i, len(keys))
 		}
 	}
-	if me := lme.Get(); me != nil {
-		for idx, err := range me.(errors.MultiError) {
-			cb(idx, nil, err)
-		}
+
+	keys, meta = dat.DropKeysAndMeta(keys, meta)
+	if len(keys) == 0 {
 		return nil
 	}
-	return tcf.RawInterface.GetMulti(keys, meta, cb)
+
+	return tcf.RawInterface.GetMulti(keys, meta, func(idx int, val PropertyMap, err error) {
+		cb(dat.OriginalIndex(idx), val, err)
+	})
 }
 
 func (tcf *checkFilter) PutMulti(keys []*Key, vals []PropertyMap, cb NewKeyCB) error {
@@ -84,25 +89,27 @@ func (tcf *checkFilter) PutMulti(keys []*Key, vals []PropertyMap, cb NewKeyCB) e
 	if cb == nil {
 		return fmt.Errorf("datastore: PutMulti callback is nil")
 	}
-	lme := errors.NewLazyMultiError(len(keys))
+
+	var dat DroppedArgTracker
 	for i, k := range keys {
 		if !k.PartialValid(tcf.kc) {
-			lme.Assign(i, MakeErrInvalidKey("key [%s] is not partially valid in context %s", k, tcf.kc).Err())
+			cb(i, nil, MakeErrInvalidKey("key [%s] is not partially valid in context %s", k, tcf.kc).Err())
+			dat.MarkForRemoval(i, len(keys))
 			continue
 		}
-		v := vals[i]
-		if v == nil {
-			lme.Assign(i, errors.New("datastore: PutMulti got nil vals entry"))
+		if vals[i] == nil {
+			cb(i, nil, errors.New("datastore: PutMulti got nil vals entry"))
+			dat.MarkForRemoval(i, len(keys))
 		}
 	}
-	if me := lme.Get(); me != nil {
-		for idx, err := range me.(errors.MultiError) {
-			cb(idx, nil, err)
-		}
+	keys, vals = dat.DropKeysAndVals(keys, vals)
+
+	if len(keys) == 0 {
 		return nil
 	}
-
-	return tcf.RawInterface.PutMulti(keys, vals, cb)
+	return tcf.RawInterface.PutMulti(keys, vals, func(idx int, key *Key, err error) {
+		cb(dat.OriginalIndex(idx), key, err)
+	})
 }
 
 func (tcf *checkFilter) DeleteMulti(keys []*Key, cb DeleteMultiCB) error {
@@ -112,7 +119,7 @@ func (tcf *checkFilter) DeleteMulti(keys []*Key, cb DeleteMultiCB) error {
 	if cb == nil {
 		return fmt.Errorf("datastore: DeleteMulti callback is nil")
 	}
-	lme := errors.NewLazyMultiError(len(keys))
+	var dat DroppedArgTracker
 	for i, k := range keys {
 		var err error
 		switch {
@@ -122,16 +129,17 @@ func (tcf *checkFilter) DeleteMulti(keys []*Key, cb DeleteMultiCB) error {
 			err = MakeErrInvalidKey("key [%s] is not valid in context %s", k, tcf.kc).Err()
 		}
 		if err != nil {
-			lme.Assign(i, err)
+			cb(i, err)
+			dat.MarkForRemoval(i, len(keys))
 		}
 	}
-	if me := lme.Get(); me != nil {
-		for idx, err := range me.(errors.MultiError) {
-			cb(idx, err)
-		}
+	keys = dat.DropKeys(keys)
+	if len(keys) == 0 {
 		return nil
 	}
-	return tcf.RawInterface.DeleteMulti(keys, cb)
+	return tcf.RawInterface.DeleteMulti(keys, func(idx int, err error) {
+		cb(dat.OriginalIndex(idx), err)
+	})
 }
 
 func applyCheckFilter(c context.Context, i RawInterface) RawInterface {
