@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "b025c097_7e6720d1",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-02T16:34:39Z",
+      "side": 1,
+      "message": "Turns out that keeping dat sorted (and minimizing allocations) is easy, but adjusting OriginalIndex to not do a linear sweep is hard.\n\nAt first I thought it could potentially be done by changing `dat` to encode \u0027breakpoints\u0027 so that \u0027sort.SearchInts\u0027 could be fed the reducedIndex and then e.g. add that to reducedIndex to obtain the expanded index. However, this makes the MarkForRemoval method really hard (impossible, I think, without keeping extra state).\n\nIf we really cared (which... I\u0027m inclined not to), then after marking, the Drop* methods could return a lookup object, such that each lookup was only logN... but meh.",
+      "parentUuid": "8eff6c9c_042190b3",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 210,
+        "endChar": 15
+      },
+      "revId": "3d08c5a8847135c064cef4da46ac59f56d73687d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87804c22_5386803d",
         "filename": "service/datastore/dropped_arg_tracker.go",
         "patchSetId": 4
