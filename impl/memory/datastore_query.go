@@ -168,8 +168,8 @@ func reduce(fq *ds.FinalizedQuery, kc ds.KeyContext, isTxn bool) (*reducedQuery,
 	if err := fq.Valid(kc); err != nil {
 		return nil, err
 	}
-	if isTxn && fq.Ancestor() == nil {
-		return nil, fmt.Errorf("queries within a transaction must include an Ancestor filter")
+	if isTxn && fq.EventuallyConsistent() {
+		return nil, fmt.Errorf("queries within a transaction cannot be eventially consistent")
 	}
 	if num := numComponents(fq); num > MaxQueryComponents {
 		return nil, fmt.Errorf(
