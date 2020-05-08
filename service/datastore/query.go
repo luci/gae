@@ -55,6 +55,9 @@ type Query struct {
 	finalizeOnce sync.Once
 	finalized    *FinalizedQuery
 	finalizeErr  error
+
+	// Indicate if the query is executed to a firestore (with datastore API)
+	firestoreMode bool
 }
 
 // queryFields are the Query's read-only fields.
@@ -103,7 +106,8 @@ func (q *Query) mod(cb func(*Query)) *Query {
 	}
 
 	ret := Query{
-		queryFields: q.queryFields,
+		queryFields:   q.queryFields,
+		firestoreMode: q.firestoreMode,
 	}
 	if len(q.order) > 0 {
 		ret.order = make([]IndexColumn, len(q.order))
@@ -589,7 +593,7 @@ func (q *Query) finalizeImpl() (*FinalizedQuery, error) {
 		kind:     q.kind,
 
 		keysOnly:             q.keysOnly,
-		eventuallyConsistent: q.eventualConsistency || ancestor == nil,
+		eventuallyConsistent: q.getEventuallyConsistent(ancestor),
 		limit:                q.limit,
 		offset:               q.offset,
 		start:                q.start,
@@ -779,4 +783,18 @@ func (q *Query) String() string {
 	}
 
 	return ret.String()
+}
+
+// FirestoreMode set the firestore mode.
+func (q *Query) FirestoreMode(on bool) *Query {
+	q.firestoreMode = on
+	return q
+}
+
+func (q *Query) getEventuallyConsistent(ancestor *Key) bool {
+	if q.firestoreMode {
+		// Respect user input
+		return q.eventualConsistency
+	}
+	return q.eventualConsistency || ancestor == nil
 }
