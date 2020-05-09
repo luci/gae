@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94b041fe_68d4f647",
+        "filename": "impl/memory/datastore_query_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-09T00:33:33Z",
+      "side": 1,
+      "message": "non-ancestor queries\n\nThis would still be a consistent query in firestore.",
+      "range": {
+        "startLine": 162,
+        "startChar": 10,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e660b2b_0cfb5b0d",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-09T00:33:33Z",
+      "side": 1,
+      "message": "can you add a bit more here? Maybe\n\n  // FirestoreMode removes internal checks for this Query which don\u0027t apply when\n  // using Firestore-in-Datastore mode.\n  //\n  // In particular, it allows non-ancestor queries within a transaction.",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 40
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3bafac_ca629547",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-09T00:33:33Z",
+      "side": 1,
+      "message": "I believe this should be modeled like keysOnly for consistency.",
+      "range": {
+        "startLine": 790,
+        "startChar": 3,
+        "endLine": 790,
+        "endChar": 16
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e7311e_3deeb85b",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-09T00:33:33Z",
+      "side": 1,
+      "message": "can we phrase this as \"transactionSafe\" instead? I don\u0027t believe that firestore queries within a transaction are eventually-consistent. When you make a query inside of a transaction in firestore it will either:\n  * be taken against a read-only snapshot of the database\n  * potentially contend with other transactions for every index/entity touched\n\nFrom https://cloud.google.com/datastore/docs/concepts/transactions#read-only_transactions\n\n\"\"\"Read-only transactions cannot modify entities, but in return, they do not contend with any other transactions and do not need to be retried. If you perform only reads in a regular, read-write transaction, then that transaction may contend with transaction that modify the same data.\"\"\"",
+      "range": {
+        "startLine": 799,
+        "startChar": 16,
+        "endLine": 799,
+        "endChar": 39
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
