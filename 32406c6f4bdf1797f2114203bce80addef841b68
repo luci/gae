@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "04264787_18db36db",
+        "filename": "impl/memory/datastore_query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-09T02:06:54Z",
+      "side": 1,
+      "message": "No need for this check and error msg as EventuallyConsistent flag will be ignored when FirestoreMode is true. We dont need to block user here.",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d6826b_17d51b85",
+        "filename": "impl/memory/datastore_query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-09T02:06:54Z",
+      "side": 1,
+      "message": "This is right.",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94b041fe_68d4f647",
         "filename": "impl/memory/datastore_query_test.go",
         "patchSetId": 3
@@ -25,6 +59,40 @@
     },
     {
       "key": {
+        "uuid": "c2c0dfe3_232ab065",
+        "filename": "impl/memory/datastore_query_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-09T02:06:54Z",
+      "side": 1,
+      "message": "No need of this as all queries are strongly consistent.",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e06974e_9f620f2c",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-09T02:06:54Z",
+      "side": 1,
+      "message": "I feel firestoreMode will be false by default. So no need to assign here.\n\nWhen a user turns on the firestoreMode in his query, then irrespective of the query being an ancestor/non-ancestor we default the eventualConsistent flag to false in finalizedQuery. We dont need to honor q.eventualConsistency as all queries in firestore are strongly consistent.  Firestore storage layer is strongly consistent. (Correct me if im wrong)\n\nIf the user doesnt turn on the fireStoreMode, we set eventualConsistent flag to true/false in finalizedQuery by using old condition q.eventualConsistency || ancestor \u003d\u003d nil. The assumption is user is using a Datastore and not a Firestore.\n\nWhen firstoreMode is true, user setting eventualConsistency to true/false will be ignored.",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e660b2b_0cfb5b0d",
         "filename": "service/datastore/query.go",
         "patchSetId": 3
@@ -36,6 +104,30 @@
       "writtenOn": "2020-05-09T00:33:33Z",
       "side": 1,
       "message": "can you add a bit more here? Maybe\n\n  // FirestoreMode removes internal checks for this Query which don\u0027t apply when\n  // using Firestore-in-Datastore mode.\n  //\n  // In particular, it allows non-ancestor queries within a transaction.",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 40
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cd5aae0_d97b9c42",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-09T02:06:54Z",
+      "side": 1,
+      "message": "and add something like this this \n\n```// All Datastore queries become strongly consistent. The eventualConsistency flag will be ignored```",
+      "parentUuid": "4e660b2b_0cfb5b0d",
       "range": {
         "startLine": 788,
         "startChar": 0,
@@ -88,6 +180,40 @@
         "endLine": 799,
         "endChar": 39
       },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969e4f65_a71ba97d",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-09T02:06:54Z",
+      "side": 1,
+      "message": "I dont think we need to expose this function outside, but just a helper function used to determine what the finalized query eventuallyConsistent flag should be.",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f07d935_8a7ffad2",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-09T02:06:54Z",
+      "side": 1,
+      "message": "return false.",
       "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
