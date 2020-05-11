@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93f5ccce_6178bfa0",
+        "filename": "impl/memory/datastore_query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "yeah eventuallyconsistent is not allowed in firestore mode, so it\u0027s not needed. Removed",
+      "parentUuid": "04264787_18db36db",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10d6826b_17d51b85",
         "filename": "impl/memory/datastore_query.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456ceb8b_034f3821",
+        "filename": "impl/memory/datastore_query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10d6826b_17d51b85",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,48 @@
     },
     {
       "key": {
+        "uuid": "e9f6e9a3_568c73d8",
+        "filename": "impl/memory/datastore_query_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "modify this unittest to test if err\u003dnil",
+      "parentUuid": "c2c0dfe3_232ab065",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73abe26a_4d4b133e",
+        "filename": "impl/memory/datastore_query_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b041fe_68d4f647",
+      "range": {
+        "startLine": 162,
+        "startChar": 10,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e06974e_9f620f2c",
         "filename": "service/datastore/query.go",
         "patchSetId": 3
@@ -87,6 +165,24 @@
       "writtenOn": "2020-05-09T02:06:54Z",
       "side": 1,
       "message": "I feel firestoreMode will be false by default. So no need to assign here.\n\nWhen a user turns on the firestoreMode in his query, then irrespective of the query being an ancestor/non-ancestor we default the eventualConsistent flag to false in finalizedQuery. We dont need to honor q.eventualConsistency as all queries in firestore are strongly consistent.  Firestore storage layer is strongly consistent. (Correct me if im wrong)\n\nIf the user doesnt turn on the fireStoreMode, we set eventualConsistent flag to true/false in finalizedQuery by using old condition q.eventualConsistency || ancestor \u003d\u003d nil. The assumption is user is using a Datastore and not a Firestore.\n\nWhen firstoreMode is true, user setting eventualConsistency to true/false will be ignored.",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b694d2f_2b9d2acd",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "Remove this setting as firestoreMode is moved to queryFields.\n\nBefore it\u0027s not for \"initializing\"/\"assigning\" the value of firestore mode. It\u0027s to avoid losing the value of firestoreModecall if users call sth like q.FirestoreMode(true).OthersFunc(***).",
+      "parentUuid": "3e06974e_9f620f2c",
       "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f8189576_5612f442",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cd5aae0_d97b9c42",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 40
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e3bafac_ca629547",
         "filename": "service/datastore/query.go",
         "patchSetId": 3
@@ -160,6 +280,30 @@
       "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae42b88a_6a58caf8",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3bafac_ca629547",
+      "range": {
+        "startLine": 790,
+        "startChar": 3,
+        "endLine": 790,
+        "endChar": 16
+      },
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "cd31f1a3_74bab4c0",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "it\u0027s not exposed?",
+      "parentUuid": "969e4f65_a71ba97d",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f07d935_8a7ffad2",
         "filename": "service/datastore/query.go",
         "patchSetId": 3
@@ -217,6 +379,24 @@
       "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca81856_a44cc162",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-11T05:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f07d935_8a7ffad2",
+      "revId": "32406c6f4bdf1797f2114203bce80addef841b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
