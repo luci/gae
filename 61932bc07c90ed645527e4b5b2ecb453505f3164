@@ -70,6 +70,30 @@
       "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ebbb27_0e32b6c8",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-12T23:16:29Z",
+      "side": 1,
+      "message": "Argh, I got mixed up with the inversions and the function call (didn\u0027t properly apply DeMorgan\u0027s); You\u0027re right that this would expand to\n\n   !firestoreMode \u0026\u0026 (eventuallyConsistent || ancestor \u003d\u003d nil)\n\nSo this is right (and I had a typo in my original comment) :)",
+      "parentUuid": "e269dc94_ec712741",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 22
+      },
+      "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
