@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c44b9b82_ef553933",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-05-12T22:41:23Z",
+      "side": 1,
+      "message": "This is hurting my brain a bit. \n\nThis bit is a mechanism for ancestor queries (which are strongly consistent by default) to elect to be eventually consistent.\n\nWith the new logic in this CL, the query will be marked as eventually consistent if:\n\n  !q.firestoreMode || (q.eventualConsistency \u0026\u0026 q.ancestor \u003d\u003d nil)\n\nWhich means that ~all existing transactions (including ancestor transactions) will be made eventually consistent.\n\nI think this should be\n\n  q.eventualConsistency || (!q.firestoreMode \u0026\u0026 ancestor \u003d\u003d nil)\n\nSemantically, I think this is:\n\n  The query is eventually consistent if the user has opted-in to eventual consistency, OR if the query is a datastore query without an ancestor set.\n\nDoes that match your understanding?",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 22
+      },
+      "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
