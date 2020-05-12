@@ -46,6 +46,30 @@
       "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e269dc94_ec712741",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-12T23:11:52Z",
+      "side": 1,
+      "message": "\u003e\u003e\u003e Which means that ~all existing transactions (including ancestor transactions) will be made eventually consistent.\n\nwhy? their firestoreMode is false, so their eventuallyConsistent is set as the same as before, which \u003d (q.eventualConsistency \u0026\u0026 q.ancestor \u003d\u003d nil)\n\nI think in firestoremode, users won\u0027t be allowed to specify eventualConsistency\u003dtrue as it cannot be true anyway.\n\nI agree that we rename it back to getEventualConsistency...as it\u0027s hard to understanding !...",
+      "parentUuid": "63f33ed3_578945b8",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 22
+      },
+      "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
