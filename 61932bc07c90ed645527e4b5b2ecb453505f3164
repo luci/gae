@@ -22,6 +22,30 @@
       "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f33ed3_578945b8",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1395809
+      },
+      "writtenOn": "2020-05-12T22:56:20Z",
+      "side": 1,
+      "message": "In Firestore Mode - all queries are strongly consistent. There is no option to make queries eventually consistent. In firestoremode, user cannot make/opt-in the queries to be eventually consistent. Thats my understanding. \n\nIf firestoremode is ON, we ignore eventualConsistency bit.\nIf firestoremode is OFF, we stick to the old condition before this CL.\n\nMaybe instead of naming transactionSafe, we just name is getEventualConsistency() and remove all the negations to keep it simple.",
+      "parentUuid": "c44b9b82_ef553933",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 22
+      },
+      "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
