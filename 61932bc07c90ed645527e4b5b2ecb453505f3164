@@ -94,6 +94,30 @@
       "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae21c4f_83e72abe",
+        "filename": "service/datastore/query.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1142534
+      },
+      "writtenOn": "2020-05-13T00:19:04Z",
+      "side": 1,
+      "message": "rename it to getEventualConsistency to avoid confusion :)",
+      "parentUuid": "76ebbb27_0e32b6c8",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 22
+      },
+      "revId": "61932bc07c90ed645527e4b5b2ecb453505f3164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
