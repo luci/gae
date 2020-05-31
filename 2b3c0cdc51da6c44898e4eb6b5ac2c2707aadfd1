@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "ca9f3c6d_7e2940ed",
+        "filename": "service/datastore/checkfilter.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1114919
+      },
+      "writtenOn": "2020-05-31T00:55:36Z",
+      "side": 1,
+      "message": "fwiw, I\u0027d bet this additional callback is what\u0027ll be the costliest perf-wise, and it\u0027ll apply in prod even if all keys are valid.",
+      "range": {
+        "startLine": 77,
+        "startChar": 46,
+        "endLine": 77,
+        "endChar": 50
+      },
+      "revId": "2b3c0cdc51da6c44898e4eb6b5ac2c2707aadfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "305b44b9_9533eefc",
+        "filename": "service/datastore/checkfilter.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1114919
+      },
+      "writtenOn": "2020-05-31T00:55:36Z",
+      "side": 1,
+      "message": "is it important to require GetMulti to potentially callback out of order?",
+      "range": {
+        "startLine": 77,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "2b3c0cdc51da6c44898e4eb6b5ac2c2707aadfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "391ee5f1_b8c18164",
+        "filename": "service/datastore/checkfilter.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1114919
+      },
+      "writtenOn": "2020-05-31T00:55:36Z",
+      "side": 1,
+      "message": "btw, why have these early exists here and on 137? It obscures the code for sure, yet doesn\u0027t seem to be useful in actual prod.\nAlso, I\u0027m surprised L119 check isn\u0027t done first.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "2b3c0cdc51da6c44898e4eb6b5ac2c2707aadfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c83e5d9_e682f791",
         "filename": "service/datastore/dropped_arg_tracker.go",
         "patchSetId": 8
