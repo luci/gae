@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c83e5d9_e682f791",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1114919
+      },
+      "writtenOn": "2020-05-31T00:44:55Z",
+      "side": 1,
+      "message": "I think this is a pretty good interview question 😊 At least it\u0027s trivial to explain.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "2b3c0cdc51da6c44898e4eb6b5ac2c2707aadfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
