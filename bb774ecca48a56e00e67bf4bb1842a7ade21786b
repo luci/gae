@@ -45,6 +45,30 @@
       "revId": "bb774ecca48a56e00e67bf4bb1842a7ade21786b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d86c7dea_c2c2db29",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-06-01T21:06:29Z",
+      "side": 1,
+      "message": "From https://golang.org/ref/spec#Order_of_evaluation\n\n\n   y[f()], ok \u003d g(h(), i()+x[j()], \u003c-c), k()\n\n   the function calls and communication happen in the order f(), h(), i(), j(), \u003c-c, g(), and k(). However, the order of those events compared to the evaluation and indexing of x and the evaluation of y is not specified.\n\nSo I think you\u0027re right, this is unspecified. It would be nice if the compiler or go vet would yell about this :(. I\u0027ll fix it.",
+      "parentUuid": "e0178e04_e8863f8f",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 59
+      },
+      "revId": "bb774ecca48a56e00e67bf4bb1842a7ade21786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
