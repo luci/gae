@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "efad5b27_f5d311e9",
+        "filename": "service/datastore/checkfilter.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-06-01T18:38:41Z",
+      "side": 1,
+      "message": "There may be multiple layers of this, with some of the items removed at each layer. While it\u0027s not required to be able to call out of order, it is required to call with gaps.\n\nOriginally the thought was that making HUGE calls to GetMulti when the original user really wants to process them as a \"stream\", would require allocating large intermediate slices, where the callback method would not. I\u0027m not convinced this is actually important though, since slices of pointers don\u0027t really take much space at all.\n\nIn any event, this would be a lot of work to change at this point.",
+      "parentUuid": "305b44b9_9533eefc",
+      "range": {
+        "startLine": 77,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "2b3c0cdc51da6c44898e4eb6b5ac2c2707aadfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "391ee5f1_b8c18164",
         "filename": "service/datastore/checkfilter.go",
         "patchSetId": 8
@@ -68,6 +92,30 @@
       "revId": "2b3c0cdc51da6c44898e4eb6b5ac2c2707aadfd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5bb5b3_aee611f3",
+        "filename": "service/datastore/checkfilter.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2020-06-01T18:38:41Z",
+      "side": 1,
+      "message": "yeah you\u0027re right, I can remove this check now. previously \u0027keys\u0027 wouldn\u0027t shrink",
+      "parentUuid": "391ee5f1_b8c18164",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "2b3c0cdc51da6c44898e4eb6b5ac2c2707aadfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
