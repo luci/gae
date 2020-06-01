@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7f3dea0_62ab50cd",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-06-01T19:44:06Z",
+      "side": 1,
+      "message": "\u003c N?",
+      "range": {
+        "startLine": 62,
+        "startChar": 27,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "bb774ecca48a56e00e67bf4bb1842a7ade21786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0178e04_e8863f8f",
+        "filename": "service/datastore/dropped_arg_tracker.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-06-01T19:44:06Z",
+      "side": 1,
+      "message": "This looks a bit fishy TBH. I can image Go can \"capture\" value of newKeys before executing dat.mustCompress. But since test pass...",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 59
+      },
+      "revId": "bb774ecca48a56e00e67bf4bb1842a7ade21786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
