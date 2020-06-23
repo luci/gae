@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f22f4c5_54a57d1b",
+        "filename": "impl/prod/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1275796
+      },
+      "writtenOn": "2020-06-23T01:59:22Z",
+      "side": 1,
+      "message": "Nit: should be CloudDS with how Go handles acronyms",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "440b87504325f4b21a8ce68089871ba52b1667ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a966197_908f6977",
+        "filename": "impl/prod/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1275796
+      },
+      "writtenOn": "2020-06-23T01:59:22Z",
+      "side": 1,
+      "message": "Is the order important? If not you could consolidate the other useX calls into one line. If it is then just ignore me :)",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "440b87504325f4b21a8ce68089871ba52b1667ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98070447_1d92fe21",
+        "filename": "impl/prod/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1275796
+      },
+      "writtenOn": "2020-06-23T01:59:22Z",
+      "side": 1,
+      "message": "Nit: consider renaming to something like UseWithGAEServices to make the difference explicit.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 8
+      },
+      "revId": "440b87504325f4b21a8ce68089871ba52b1667ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
