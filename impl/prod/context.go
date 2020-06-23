@@ -21,11 +21,14 @@ import (
 	"net/url"
 	"strings"
 
+	cloud "go.chromium.org/gae/impl/cloud"
 	"go.chromium.org/gae/service/urlfetch"
 	"golang.org/x/net/context"
 	gOAuth "golang.org/x/oauth2/google"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/remote_api"
+
+	"cloud.google.com/go/datastore"
 )
 
 // RemoteAPIScopes is the set of OAuth2 scopes needed for Remote API access.
@@ -53,12 +56,22 @@ func getAEContext(c context.Context) context.Context {
 	return ps.context(c)
 }
 
-func setupAECtx(c, aeCtx context.Context) context.Context {
+type CloudServices struct {
+	CloudDs *datastore.Client
+}
+
+func setupAECtx(c, aeCtx context.Context, services CloudServices) context.Context {
 	c = withProdState(c, prodState{
 		ctx:      aeCtx,
 		noTxnCtx: aeCtx,
 	})
-	return useModule(useMail(useUser(useURLFetch(useRDS(useMC(useTQ(useGI(useLogging(c)))))))))
+	c = useMC(useTQ(useGI(useLogging(c))))
+	if services.CloudDs != nil {
+		c = cloud.UseCloudDatastore(c, services.CloudDs)
+	} else {
+		c = useRDS(c)
+	}
+	return useModule(useMail(useUser(useURLFetch(c))))
 }
 
 // Use adds production implementations for all the gae services to the
@@ -86,7 +99,7 @@ func setupAECtx(c, aeCtx context.Context) context.Context {
 // Users who wish to access the raw AppEngine SDK must derive their own
 // AppEngine Context at their own risk.
 func Use(c context.Context, r *http.Request) context.Context {
-	return setupAECtx(c, appengine.NewContext(r))
+	return setupAECtx(c, appengine.NewContext(r), CloudServices{})
 }
 
 // UseRemote is the same as Use, except that it lets you attach a context to
@@ -157,8 +170,14 @@ func UseRemote(inOutCtx *context.Context, host string, client *http.Client) (err
 	if err != nil {
 		return
 	}
-	*inOutCtx = setupAECtx(*inOutCtx, aeCtx)
+	*inOutCtx = setupAECtx(*inOutCtx, aeCtx, CloudServices{})
 	return nil
+}
+
+// UseWithCloudServices is the same as Use, but selectively enables services to use the
+// Cloud implementation rather than the GAE Classic APIs.
+func UseWithCloudServices(c context.Context, services CloudServices, r *http.Request) context.Context {
+	return setupAECtx(c, appengine.NewContext(r), services)
 }
 
 // prodState is the current production state.

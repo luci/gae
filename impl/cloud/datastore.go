@@ -47,6 +47,12 @@ func (cds *cloudDatastore) use(c context.Context) context.Context {
 	})
 }
 
+// This can be used to enable Cloud Datastore separately from other cloud services.
+func UseCloudDatastore(c context.Context, client *datastore.Client) context.Context {
+	cds := cloudDatastore{client: client}
+	return cds.use(c)
+}
+
 // boundDatastore is a bound instance of the cloudDatastore installed in the
 // Context.
 type boundDatastore struct {

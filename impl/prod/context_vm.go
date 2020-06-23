@@ -29,5 +29,5 @@ import (
 // It is important to note that this DOES NOT install the AppEngine SDK into the
 // supplied Context. See the warning in Use for more information.
 func UseBackground(c context.Context) context.Context {
-	return setupAECtx(c, appengine.BackgroundContext())
+	return setupAECtx(c, appengine.BackgroundContext(), CloudServices{})
 }
