@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f11d3d1_0ee42d4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002539
+      },
+      "writtenOn": "2020-07-25T23:25:27Z",
+      "side": 1,
+      "message": "What do you think about this?\n\nI want new tq library to have the same interface (at least when using datastore): \n\n  err :\u003d datastore.RunInTransaction(ctx, func(ctx context.Context) error {\n    tq.AddTask(ctx, task)\n    ...\n  }, nil)\n\nBut ttq\u0027s PostProcess callbacks make it hard to keep such simple interface. \n\nThe downside is slightly higher CPU cost of all transactions, even if they don\u0027t use txndefer.Defer(...) :( I can micro-optimize it a bit if necessary by delaying some initialization until first txndefer.Defer call, but it would make code more convoluted.",
+      "revId": "8cdc2142a40e40374af976609eb67fe731a41f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
