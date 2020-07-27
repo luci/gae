@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "e45e4e7d_cb73f224",
+        "filename": "filter/txndefer/filter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1114919
+      },
+      "writtenOn": "2020-07-27T23:25:38Z",
+      "side": 1,
+      "message": "\u003e The lock is still needed since it\u0027s not uncommon to launch multiple goroutines within a transaction.\n\nTrue, but it is uncommon to NOT wait for them to complete, which would provide synchronization.\nHence, I think, the lock isn\u0027t necessary in execCBs(), which would reduce filter to just creating 1 new context.",
+      "parentUuid": "2d4742b4_d9bc69ef",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "8cdc2142a40e40374af976609eb67fe731a41f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b6a1b23_7ec5f508",
         "filename": "filter/txndefer/filter_test.go",
         "patchSetId": 1
